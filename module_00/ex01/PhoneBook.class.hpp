@@ -10,7 +10,7 @@ class PhoneBook {
 public:
 
 	int 	i;
-	Contact contact[8];
+	Contact contact[NBR];
 	void	setContact(void);
 	void	searchContact(void);
 
