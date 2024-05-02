@@ -9,12 +9,14 @@ class PhoneBook {
 
 public:
 
+	int 	i;
+	Contact contact[8];
+	void	setContact(void);
+	void	searchContact(void);
+
 	PhoneBook(void);
 	~PhoneBook(void);
-
-private:
-
-	static Contact contact[8];
+	
 };
 
 #endif

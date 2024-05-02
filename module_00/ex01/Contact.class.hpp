@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.class.h                                    :+:      :+:    :+:   */
+/*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:58:44 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/04/30 18:36:47 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:00:49 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ class Contact {
 
 public:
 
+	int			index;
+	std::string	firstName;
+	std::string	lastName;
+	int			phoneNumber;
+	std::string	nickName;
+	std::string	darkestSecret;
+	
 	Contact(void);
-	~Contact(void);
+	~Contact(void);	
 
-private:
-
-	static int	_firstName;
-	static int	_phoneNumber;
-	static int	_nickname;
-	static int	_darkestSecret;
 };
-
 #endif
