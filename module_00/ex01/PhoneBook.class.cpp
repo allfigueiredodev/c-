@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:51:40 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/02 20:52:57 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/04 20:36:32 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ PhoneBook::PhoneBook(void)
 {
 	std::cout << "Constructor called" << std::endl;
 	this->i = 0;
+	for (size_t j = 0; j < NBR; j++)
+		this->contact[j].index = -1;
 	return ;
 };
 
@@ -38,6 +40,8 @@ void	PhoneBook::setContact(void)
 		this->contact[this->i].index = this->i + 1;
 		std::cout << "Please inform the contact first name" << std::endl;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (!this->contact[this->i].firstName.empty())
+			this->contact[this->i].firstName.clear();
 		while(this->contact[this->i].firstName.empty())
 		{
 			std::getline(std::cin, temp);
@@ -47,6 +51,8 @@ void	PhoneBook::setContact(void)
 				this->contact[this->i].firstName = temp;
 		}
 		std::cout << "Please inform the contact last name" << std::endl;
+		if (!this->contact[this->i].lastName.empty())
+			this->contact[this->i].lastName.clear();
 		while(this->contact[this->i].lastName.empty())
 		{
 			std::getline(std::cin, temp);
@@ -56,6 +62,8 @@ void	PhoneBook::setContact(void)
 				this->contact[this->i].lastName = temp;
 		}
 		std::cout << "Please inform the contact phone number" << std::endl;
+		if (!this->contact[this->i].phoneNumber.empty())
+			this->contact[this->i].phoneNumber.clear();
 		while(this->contact[this->i].phoneNumber.empty())
 		{
 			std::getline(std::cin, temp);
@@ -65,6 +73,8 @@ void	PhoneBook::setContact(void)
 				this->contact[this->i].phoneNumber = temp;
 		}
 		std::cout << "Please inform the contact nick name" << std::endl;
+		if (!this->contact[this->i].nickName.empty())
+			this->contact[this->i].nickName.clear();
 		while(this->contact[this->i].nickName.empty())
 		{
 			std::getline(std::cin, temp);
@@ -74,6 +84,8 @@ void	PhoneBook::setContact(void)
 				this->contact[this->i].nickName = temp;
 		}
 		std::cout << "Please inform the contact darkest secret" << std::endl;
+		if (!this->contact[this->i].darkestSecret.empty())
+			this->contact[this->i].darkestSecret.clear();
 		while(this->contact[this->i].darkestSecret.empty())
 		{
 			std::getline(std::cin, temp);
@@ -99,12 +111,20 @@ void	PhoneBook::searchContact(void)
 	int tempIndex = 0;
 	
 	std::cout << "     index|first name| last name|  nick name" << std::endl;
+	if (this->contact[0].index == -1)
+	{
+		std::cout << "The phonebook is still empty, try to fill it with new contacts using the \"ADD\" option at the main menu" << std::endl;
+		return ;
+	}
 	while (i <= NBR - 1)
 	{
-		std::cout << "         " << this->contact[i].index << "| ";
-		std::cout << this->contact[i].firstName << "| ";
-		std::cout << this->contact[i].lastName << "| ";
-		std::cout << this->contact[i].nickName << std::endl;
+		if (this->contact[i].index != -1)
+		{
+			std::cout << "         " << this->contact[i].index << "| ";
+			std::cout << this->contact[i].firstName << "| ";
+			std::cout << this->contact[i].lastName << "| ";
+			std::cout << this->contact[i].nickName << std::endl;
+		}
 		i++;
 	}
 	std::cout << "Please select an entry" << std::endl;
