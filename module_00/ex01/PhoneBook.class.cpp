@@ -6,16 +6,11 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:51:40 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/06 09:58:50 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:55:44 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
-#include "PhoneBook.class.hpp"
-#include <cstdio>
-#include <limits>
-#include <iomanip>
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void)
 {
@@ -23,7 +18,6 @@ PhoneBook::PhoneBook(void)
 	this->i = 0;
 	for (size_t j = 0; j < NBR; j++)
 		this->contact[j].setIndex(-1);
-		// this->contact[j].index = -1;
 	return ;
 };
 
@@ -32,6 +26,53 @@ PhoneBook::~PhoneBook(void)
 	std::cout << "Destructor called" << std::endl;
 	return ;
 };
+
+std::string	PhoneBook::getFieldInput(std::string field, const std::string promptMsg)
+{
+	std::string temp;
+
+	std::cout << promptMsg << std::endl;
+	if (!field.empty())
+		field.clear();
+	while(temp.empty())
+	{
+		std::getline(std::cin, temp);
+		if (temp.empty())
+		{
+			std::cout << promptMsg << std::endl;
+			std::cout << "This field can't be empty" << std::endl;
+		}
+	}
+	return (temp);
+}
+
+void	PhoneBook::setContact(void)
+{
+	std::string temp;
+	
+	if (this->i <= NBR - 1)
+	{
+		this->contact[this->i].setIndex(this->i + 1);
+		this->contact[this->i].setFirstName(PhoneBook::getFieldInput(this->contact[this->i].getFirstName(),
+			"Please inform the contact first name"));
+		this->contact[this->i].setLastName(PhoneBook::getFieldInput(this->contact[this->i].getLastName(),
+			"Please inform the contact last name"));
+		this->contact[this->i].setPhoneNumber(PhoneBook::getFieldInput(this->contact[this->i].getPhoneNumber(),
+			"Please inform the contact phone number"));
+		this->contact[this->i].setNickName(PhoneBook::getFieldInput(this->contact[this->i].getNickName(),
+			"Please inform the contact nick name"));
+		this->contact[this->i].setDarkestSecret(PhoneBook::getFieldInput(this->contact[this->i].getDarkestSecret(),
+			"Please inform the contact darkest secret"));
+	}
+	this->i++;
+	if (this->i == NBR)
+	{
+		this->i = 0;
+		std::cout << "Becarefull!!! Next add will overwrite the oldest contact!!!" << std::endl;
+		return ;
+	}
+	std::cout << "Contact added to phonebook" << std::endl;
+}
 
 std::string	formatCol(const std::string str)
 {
@@ -45,58 +86,12 @@ std::string	formatCol(const std::string str)
 	return (result);		
 }
 
-void	PhoneBook::getFieldInput(std::string& field, const std::string promptMsg)
-{
-	std::string temp;
-
-	std::cout << promptMsg << std::endl;
-	if (!field.empty())
-		field.clear();
-	while(field.empty())
-	{
-		std::getline(std::cin, temp);
-		system("clear");
-		if (temp.empty())
-		{
-			std::cout << promptMsg << std::endl;
-			std::cout << "This field can't be empty" << std::endl;
-		}
-		else
-			field = temp;
-	}
-}
-
-
-void	PhoneBook::setContact(void)
-{
-	std::string temp;
-	
-	if (this->i <= NBR - 1)
-	{
-		// this->contact[this->i].index = this->i + 1;
-		this->contact[this->i].setIndex(this->i + 1);
-		PhoneBook::getFieldInput(this->contact[this->i].firstName, "Please inform the contact first name");
-		PhoneBook::getFieldInput(this->contact[this->i].lastName, "Please inform the contact last name");
-		PhoneBook::getFieldInput(this->contact[this->i].phoneNumber, "Please inform the contact phone number");
-		PhoneBook::getFieldInput(this->contact[this->i].nickName, "Please inform the contact nick name");
-		PhoneBook::getFieldInput(this->contact[this->i].darkestSecret, "Please inform the contact darkest secret");
-	}
-	this->i++;
-	if (this->i == NBR)
-	{
-		this->i = 0;
-		std::cout << "Becarefull!!! Next add will overwrite the oldest contact!!!" << std::endl;
-		return ;
-	}
-	std::cout << "Contact added to phonebook" << std::endl;
-}
-
 void	PhoneBook::searchContact(void)
 {
 	int i = 0;
 	int tempIndex = 0;
 	
-	if (this->contact[0].index == -1)
+	if (this->contact[0].getIndex() == -1)
 	{
 		std::cout << "The phonebook is still empty, try to fill it with new contacts using the \"ADD\" option at the main menu" << std::endl;
 		return ;
@@ -107,12 +102,12 @@ void	PhoneBook::searchContact(void)
 	std::cout << std::setw(10) << "Nick Name" << std::endl;
 	while (i <= NBR - 1)
 	{
-		if (this->contact[i].index != -1)
+		if (this->contact[i].getIndex() != -1)
 		{
-			std::cout << std::setw(10) << this->contact[i].index << "|";
-			std::cout << std::setw(10) << formatCol(this->contact[i].firstName) << "|";
-			std::cout << std::setw(10) << formatCol(this->contact[i].lastName) << "|";
-			std::cout << std::setw(10) << formatCol(this->contact[i].nickName) << std::endl;
+			std::cout << std::setw(10) << this->contact[i].getIndex() << "|";
+			std::cout << std::setw(10) << formatCol(this->contact[i].getFirstName()) << "|";
+			std::cout << std::setw(10) << formatCol(this->contact[i].getLastName()) << "|";
+			std::cout << std::setw(10) << formatCol(this->contact[i].getNickName()) << std::endl;
 		}
 		i++;
 	}
@@ -124,9 +119,9 @@ void	PhoneBook::searchContact(void)
 		if ( tempIndex < 1 || tempIndex > NBR)
 			std::cout << "Please choose a valid entry" << std::endl;
 	}
-	std::cout << this->contact[tempIndex - 1].firstName << std::endl;
-	std::cout << this->contact[tempIndex - 1].lastName << std::endl;
-	std::cout << this->contact[tempIndex - 1].phoneNumber << std::endl;
-	std::cout << this->contact[tempIndex - 1].nickName << std::endl;
-	std::cout << this->contact[tempIndex - 1].darkestSecret << std::endl;
+	std::cout << this->contact[tempIndex - 1].getFirstName() << std::endl;
+	std::cout << this->contact[tempIndex - 1].getLastName() << std::endl;
+	std::cout << this->contact[tempIndex - 1].getPhoneNumber() << std::endl;
+	std::cout << this->contact[tempIndex - 1].getNickName() << std::endl;
+	std::cout << this->contact[tempIndex - 1].getDarkestSecret() << std::endl;
 }

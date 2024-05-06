@@ -1,19 +1,17 @@
-#ifndef PHONEBOOK_H
-#define	PHONEBOOK_H
+#ifndef PHONEBOOK_CLASS_H
+#define	PHONEBOOK_CLASS_H
 
-#include <string>
-#include <iostream>
-#include "Contact.class.hpp"
+#include "PhoneBook.hpp"
 
 class PhoneBook {
 
 public:
 
-	int 	i;
-	Contact contact[NBR];
-	void	setContact(void);
-	void	searchContact(void);
-	void	getFieldInput(std::string& field, const std::string promptMsg);
+	int 		i;
+	Contact 	contact[NBR];
+	void		setContact(void);
+	void		searchContact(void);
+	std::string	getFieldInput(std::string field, const std::string promptMsg);
 
 	PhoneBook(void);
 	~PhoneBook(void);

@@ -2,7 +2,7 @@ NAME = phonebook
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
-SRC = PhoneBook.cpp PhoneBook.class.cpp Contact.class.cpp
+SRC = PhoneBook.cpp PhoneBook.class.cpp Contact.class.cpp 
 
 OBJS = $(SRC:.cpp=.o)
 

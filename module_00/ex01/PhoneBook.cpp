@@ -6,12 +6,11 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:50:20 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/04 23:36:57 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:49:40 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.class.hpp"
-#include "Contact.class.hpp"
+#include "PhoneBook.hpp"
 
 bool	ft_parseup(const std::string str1, const std::string str2)
 {
