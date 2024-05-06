@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:50:20 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/04 18:54:47 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/04 23:36:57 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main (void)
 	{
 		std::cout << "Please type one of the following commands:" << std::endl;
 		std::cout << "ADD | SEARCH | EXIT" << std::endl;
-		std::cin >> command;
+		std::getline(std::cin, command);
 		if (ft_parseup(command, "ADD"))
 		{
 			phoneBook.setContact();
