@@ -1,7 +1,5 @@
 #include "Harl.hpp"
 
-int Harl::_i = -1;
-
 Harl::Harl(void) {
 	Harl::_complain[0].key = "DEBUG";
 	Harl::_complain[0].fptr = &Harl::debug;
@@ -16,9 +14,24 @@ Harl::Harl(void) {
 Harl::~Harl(void) {};
 
 void Harl::complain( std::string level ){
-	Harl::_i++;
-	level.compare(Harl::_complain[Harl::_i].key) == 0 ? (this->*_complain[Harl::_i].fptr)() : complain(level);
-	return ;
+	int	i = 0;
+
+	while (level.compare(Harl::_complain[i].key) && i < 4)
+		i++;
+	switch (i)
+	{
+		case 0:
+			(this->*_complain[0].fptr)();
+		case 1:
+			(this->*_complain[1].fptr)();
+		case 2:
+			(this->*_complain[2].fptr)();
+		case 3:
+			(this->*_complain[3].fptr)();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	};
 }
 
 void Harl::debug( void ){
