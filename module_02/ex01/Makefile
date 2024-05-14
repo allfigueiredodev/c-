@@ -1,8 +1,8 @@
-NAME = fixed
+NAME = Fixed
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
-SRC = main.cpp Fixed.class.cpp
+SRC = main.cpp Fixed.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
