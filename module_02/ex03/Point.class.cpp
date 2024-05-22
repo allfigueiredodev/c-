@@ -1,6 +1,6 @@
 #include "Point.class.hpp"
 
-// Point::Point(void) {};
+Point::Point(void) : _x(0) , _y(0) {};
 
 Point::~Point(void) {};
 
@@ -10,7 +10,6 @@ Point&	Point::operator=(const Point& rhs) {
 	if (this != &rhs) {
 		(Fixed&)_x = Fixed(rhs.getX());
 		(Fixed&)_y = Fixed(rhs.getY());
-		// *this = rhs;
 	}
 	return (*this);
 };
@@ -25,4 +24,4 @@ Fixed Point::getX(void) const {
 
 Fixed Point::getY(void) const {
 	return (_y);
-};	
+};
