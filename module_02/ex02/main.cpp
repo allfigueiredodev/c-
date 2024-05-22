@@ -17,7 +17,7 @@ int main( void ) {
 
 	std::cout << YELLOW << "***OTHER TESTS***" << DFT << std::endl;
 	Fixed c(10);
-	Fixed d(22);
+	Fixed d(32);
 
 	std::cout << MAG_YE << "_COMPARISON TESTS_" << DFT << std::endl;
 	if (c < d)

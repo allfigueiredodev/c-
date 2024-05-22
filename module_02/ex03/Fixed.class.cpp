@@ -1,3 +1,4 @@
+#include "Fixed.hpp"
 #include "Fixed.class.hpp"
 
 const int Fixed::_fracBits = 8;
@@ -39,22 +40,22 @@ Fixed::~Fixed(void) {
 // Arithmetic overload
 
 Fixed Fixed::operator+(const Fixed& Fixed) const {
-	std::cout << GREEN << "Sum operator called" << DFT << std::endl;
+	// std::cout << GREEN << "Sum operator called" << DFT << std::endl;
 	return (this->toFloat() + Fixed.toFloat());
 }
 
 Fixed Fixed::operator-(const Fixed& Fixed) const {
-	std::cout << GREEN << "minus operator called" << DFT << std::endl;
+	// std::cout << GREEN << "minus operator called" << DFT << std::endl;
 	return (this->toFloat() - Fixed.toFloat());
 }
 
 Fixed Fixed::operator*(const Fixed& Fixed) const {
-	std::cout << GREEN << "multiplication operator called" << DFT << std::endl;
+	// std::cout << GREEN << "multiplication operator called" << DFT << std::endl;
 	return (this->toFloat() * Fixed.toFloat());
 }
 
 Fixed Fixed::operator/(const Fixed& Fixed) const {
-	std::cout << GREEN << "division operator called" << DFT << std::endl;
+	// std::cout << GREEN << "division operator called" << DFT << std::endl;
 	return (this->toFloat() / Fixed.toFloat());
 }
 

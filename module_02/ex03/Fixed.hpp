@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include "Fixed.class.hpp"
 
 #define BLUE_GREEN	"\033[32;44m"
 #define MAG_YE		"\033[33;45m"
@@ -16,7 +15,5 @@
 #define CYAN    	"\033[1;36m"
 #define WHITE    	"\033[1;37m"
 #define DFT   		"\033[0m"
-
-bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif
