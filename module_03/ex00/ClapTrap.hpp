@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "ClapTrap.class.hpp"
 
 #define BLUE_GREEN	"\033[32;44m"
 #define MAG_YE		"\033[33;45m"

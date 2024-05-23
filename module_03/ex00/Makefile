@@ -2,7 +2,7 @@ NAME = Aaaaand
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
-SRC = main.cpp ClapTrap.hpp ClapTrap.class.cpp ClapTrap.class.hpp
+SRC = main.cpp ClapTrap.class.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
