@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 19:33:43 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/23 17:57:45 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/24 21:30:12 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,17 @@ int main (void) {
 
 	std::cout << "One: " << one.getEnergyPoints() << std::endl;
 	std::cout << "Two: " << two.getEnergyPoints() << std::endl;
-	
+
+	// ScavTrap Scav_one("Scav_one");
+	// ScavTrap Scav_two("Scav_two");	
+	ScavTrap Scav_one("Scav_one");
+	ScavTrap Scav_two("Scav_two");	
+
+	std::cout << "Scav_one name: " << CYAN << Scav_one.getName() << DFT << std::endl;
+	std::cout << "Scav_one damage: " << CYAN << Scav_one.getAttackDamage() << DFT << std::endl;
+	std::cout << "Scav_one energy: " << CYAN << Scav_one.getEnergyPoints() << DFT << std::endl;
+	std::cout << "Scav_two name: " << CYAN << Scav_two.getName() << DFT << std::endl;
+	std::cout << "Scav_two damage: " << CYAN << Scav_two.getAttackDamage() << DFT << std::endl;
+	std::cout << "Scav_two energy: " << CYAN << Scav_two.getEnergyPoints() << DFT << std::endl;
+
 }

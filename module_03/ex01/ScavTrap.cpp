@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:56:29 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/23 20:41:35 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/24 21:22:24 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,20 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include "ScavTrap.class.hpp"
+#include "ScavTrap.hpp"
 
 	ScavTrap::ScavTrap(void) : ClapTrap() {
 		std::cout << "ScavTrap default constructor called." << std::endl;
+		_hitPoints = 100; 
+		_energyPoints = 50;
+		_attackDamage = 20;
 	};
 	
-	ScavTrap::ScavTrap(std::string name) : ClapTrap(), _name(name), _hitPoints(100), _energyPoints(50), _attackDamage(20) {
+	ScavTrap::ScavTrap(std::string name) : ClapTrap() {
 		std::cout << "ScavTrap " << name << " was created." << std::endl;
+		_hitPoints = 100; 
+		_energyPoints = 50;
+		_attackDamage = 20;
 	};
 	
 	ScavTrap::~ScavTrap(void) {
@@ -53,9 +59,14 @@
 			this->_attackDamage = rhs._attackDamage;			
 		}
 		return (*this);
-	};	
+	};
 	
 	void ScavTrap::guardGate() {
 		std::cout << "ScavTrap is now in Gate keeper mode." << std::endl;
 	};
+
+	std::string ScavTrap::getName(void) {
+		return (_name);
+	}
+
 
