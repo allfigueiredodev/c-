@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.class.cpp                                 :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:39:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/24 21:29:08 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:30:17 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ClapTrap.h"
 #include "ClapTrap.hpp"
 
 	ClapTrap::ClapTrap(void) : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-		std::cout << "ClapTrap default constructor called." << std::endl;
+		std::cout << YELLOW << "ClapTrap default constructor called." << DFT << std::endl;
 	};
 	
 	ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-		std::cout << "ClapTrap " << name << " was created." << std::endl;
+		std::cout << YELLOW << "ClapTrap " << name << " was created." << DFT << std::endl;
 	};
 	
 	ClapTrap::~ClapTrap(void) {

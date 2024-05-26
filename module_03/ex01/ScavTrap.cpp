@@ -5,37 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 18:56:29 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/24 21:22:24 by aperis-p         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "ScavTrap.hpp"
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ClapTrap.class.cpp                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:39:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/23 19:28:51 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:46:20 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ClapTrap.h"
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
 	ScavTrap::ScavTrap(void) : ClapTrap() {
-		std::cout << "ScavTrap default constructor called." << std::endl;
+		std::cout << GREEN << "ScavTrap default constructor called." << DFT << std::endl;
 		_hitPoints = 100; 
 		_energyPoints = 50;
 		_attackDamage = 20;
 	};
 	
-	ScavTrap::ScavTrap(std::string name) : ClapTrap() {
-		std::cout << "ScavTrap " << name << " was created." << std::endl;
+	ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
+		std::cout << GREEN << "ScavTrap " << name << " was created." << DFT << std::endl;
 		_hitPoints = 100; 
 		_energyPoints = 50;
 		_attackDamage = 20;
@@ -62,11 +49,32 @@
 	};
 	
 	void ScavTrap::guardGate() {
-		std::cout << "ScavTrap is now in Gate keeper mode." << std::endl;
+		std::cout << CYAN << "ScavTrap" << _name << " is now in Gate keeper mode." << DFT <<  std::endl;
 	};
+
+	void ScavTrap::attack(const std::string& target) {
+		if (_energyPoints && _hitPoints) {
+			std::cout << "ScavTrap " << MAG_YE <<
+			_name << DFT << " attacks " << BLUE_GREEN <<
+			target << DFT << ", " << "causing " << RED <<
+			_attackDamage << DFT << " points of damage!" << std::endl;
+		_energyPoints = _energyPoints - 1;
+		std::cout << "ScavTrap " << MAG_YE << _name << DFT << " has " << 
+		BLUE <<	_energyPoints << DFT << " energy points left." << std::endl;
+		}
+		else {
+			(!_energyPoints) ? 
+		std::cout << "ScavTrap " << MAG_YE <<  _name << DFT << 
+		" can't attack, there is no energy points left to use." << std::endl : 
+		std::cout << "ScavTrap " << MAG_YE <<  _name << DFT << RED <<
+		" is dead." << DFT << std::endl;
+		}	
+	}
 
 	std::string ScavTrap::getName(void) {
 		return (_name);
 	}
-
-
+	
+	int ScavTrap::getHitPoints(void) {
+		return (_hitPoints);
+	}

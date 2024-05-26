@@ -2,7 +2,7 @@ NAME = serena
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
-SRC = main.cpp ClapTrap.class.cpp ScavTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
