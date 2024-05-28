@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.class.cpp                                 :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:39:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/23 18:04:08 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/27 22:06:39 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ClapTrap.h"
 
-	ClapTrap::ClapTrap(void) {
-		std::cout << "ClapTrap default constructor called." << std::endl;
+	ClapTrap::ClapTrap(void) : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+		std::cout << GREEN << "ClapTrap default constructor called." << DFT << std::endl;
 	};
 	
 	ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
-		std::cout << "ClapTrap " << name << " was created." << std::endl;
+		std::cout << GREEN << "ClapTrap " << name << " was created." << DFT << std::endl;
 	};
 	
 	ClapTrap::~ClapTrap(void) {
-		std::cout << "ClapTrap " << _name << " was destroyed." << std::endl;
+		std::cout << RED << "ClapTrap " << _name << " was destroyed." << DFT << std::endl;
 	};
 	
 	ClapTrap::ClapTrap(const ClapTrap& ClapTrap) {

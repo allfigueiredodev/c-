@@ -1,8 +1,8 @@
-NAME = repetitive
+NAME = diamond
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -Wshadow -std=c++98 -g3
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
