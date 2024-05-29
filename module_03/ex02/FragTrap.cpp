@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:39:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/25 23:04:34 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:08:27 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 	};
 	
 	FragTrap::~FragTrap(void) {
-		std::cout << "FragTrap " << _name << " was destroyed." << std::endl;
+		std::cout << GREEN << "FragTrap " << _name << " was destroyed." << DFT << std::endl;
 	};
 	
 	FragTrap::FragTrap(const FragTrap& FragTrap) {

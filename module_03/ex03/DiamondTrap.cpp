@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:39:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/27 20:05:05 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:22:42 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@
 #include "DiamondTrap.hpp"
 
 	DiamondTrap::DiamondTrap(void) {
-		std::cout << GREEN << "DiamondTrap default constructor called." << DFT << std::endl;
+		std::cout << MAGENTA << "DiamondTrap default constructor called." << DFT << std::endl;
 	};
 	
 	DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name){
-		std::cout << GREEN << "DiamondTrap " << name << " was created." << DFT << std::endl;
+		std::cout << MAGENTA << "DiamondTrap " << name << " was created." << DFT << std::endl;
 		this->name = name;
 		ScavTrap::_energyPoints = 50;
 		this->_energyPoints = ScavTrap::_energyPoints;
 	};
 	
 	DiamondTrap::~DiamondTrap(void) {
-		std::cout << "DiamondTrap " << name << " was destroyed." << std::endl;
+		std::cout << MAGENTA << "DiamondTrap " << name << " was destroyed." << DFT << std::endl;
 	};
 	
 	DiamondTrap::DiamondTrap(const DiamondTrap& DiamondTrap) {
@@ -55,11 +55,3 @@
 		std::cout << "My Diamond name is: " << name << std::endl;
 		std::cout << "My ClapTrap name is: " << ClapTrap::_name << std::endl;
 	}
-
-	// std::string DiamondTrap::getName(void) {
-	// 	return (name);
-	// }
-	
-	// int DiamondTrap::getHitPoints(void) {
-	// 	return (_hitPoints);
-	// }

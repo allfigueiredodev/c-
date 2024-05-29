@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:39:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/27 20:04:32 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:17:56 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 #include "ScavTrap.hpp"
 
 	ScavTrap::ScavTrap(void) : ClapTrap() {
-		std::cout << GREEN << "ScavTrap default constructor called." << DFT << std::endl;
+		std::cout << BLUE << "ScavTrap default constructor called." << DFT << std::endl;
 		this->_hitPoints = 100; 
 		this->_energyPoints = 50;
 		this->_attackDamage = 20;
 	};
 	
 	ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-		std::cout << GREEN << "ScavTrap " << name << " was created." << DFT << std::endl;
+		std::cout << BLUE << "ScavTrap " << name << " was created." << DFT << std::endl;
 		this->_hitPoints = 100; 
 		this->_energyPoints = 50;
 		this->_attackDamage = 20;
 	};
 	
 	ScavTrap::~ScavTrap(void) {
-		std::cout << "ScavTrap " << _name << " was destroyed." << std::endl;
+		std::cout << BLUE << "ScavTrap " << _name << " was destroyed." << DFT << std::endl;
 	};
 	
 	ScavTrap::ScavTrap(const ScavTrap& ScavTrap) {

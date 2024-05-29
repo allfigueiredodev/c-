@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:39:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/25 22:46:20 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:09:41 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 	};
 	
 	ScavTrap::~ScavTrap(void) {
-		std::cout << "ScavTrap " << _name << " was destroyed." << std::endl;
+		std::cout << GREEN << "ScavTrap " << _name << " was destroyed." << DFT << std::endl;
 	};
 	
 	ScavTrap::ScavTrap(const ScavTrap& ScavTrap) {

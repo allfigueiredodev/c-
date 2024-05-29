@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Cat.class.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/23 18:56:33 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/29 13:47:50 by aperis-p         ###   ########.fr       */
+/*   Created: 2024/05/28 19:20:55 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/05/28 20:38:23 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAV_TRAP_HPP
-# define SCAV_TRAP_HPP
+#ifndef CAT_CLASS_HPP
+#define CAT_CLASS_HPP
 
-#include "ClapTrap.h"
-#include "ClapTrap.hpp"
+#include "Polymorphism.h"
 
-class ScavTrap : virtual public ClapTrap {
+class Cat : public Animal {
 
 	public:
-		ScavTrap(void);
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap& ScavTrap);
-		ScavTrap& operator=(const ScavTrap& rhs);
-		~ScavTrap();
-		void guardGate();
-		void attack(const std::string& target);
-		std::string getName(void);
-		int getHitPoints(void);
+		Cat(void);
+		~Cat(void);
+		Cat(const Cat& Cat);
+		Cat& operator=(const Cat& rhs);
+		std::string getType(void) const;
+		void makeSound(void) const;
+	
+	protected:
+		std::string type;
+		
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 18:56:33 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/27 19:44:18 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:23:21 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		~DiamondTrap();
 		void attack(const std::string& target);
 		void whoAmI();
-		// std::string getName(void);
 };
 
 #endif
