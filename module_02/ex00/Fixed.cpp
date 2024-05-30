@@ -1,4 +1,4 @@
-#include "Fixed.class.hpp"
+#include "Fixed.hpp"
 
 const int Fixed::_fracBits = 8;
 
@@ -7,7 +7,6 @@ Fixed::Fixed(void){
 	std::cout << "Default constructor called" << std::endl;
 };
 
-// Fixed::Fixed(const Fixed& Fixed) : _rawBits(Fixed._rawBits) {
 Fixed::Fixed(const Fixed& Fixed) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = Fixed;

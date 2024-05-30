@@ -1,5 +1,5 @@
+#include "Fixed.h"
 #include "Fixed.hpp"
-#include "Fixed.class.hpp"
 
 const int Fixed::_fracBits = 8;
 

@@ -1,4 +1,4 @@
-#include "Fixed.hpp"
+#include "Fixed.h"
 
 int main( void ) {
 	Fixed a;

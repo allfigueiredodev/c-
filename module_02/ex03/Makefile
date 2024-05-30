@@ -2,7 +2,7 @@ NAME = bsp
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
-SRC = main.cpp Fixed.class.cpp Point.cpp Point.class.cpp
+SRC = main.cpp Fixed.cpp bsp.cpp Point.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

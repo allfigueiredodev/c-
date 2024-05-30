@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 18:33:31 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/29 20:49:29 by aperis-p         ###   ########.fr       */
+/*   Created: 2024/05/29 19:59:06 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/05/29 20:43:58 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef BRAIN_CLASS_HPP
+#define BRAIN_CLASS_HPP
+
 #include "Polymorphism.h"
 
-int main()
-{
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	delete j;//should not create a leak
-	delete i;
-	...
-	return 0;
-}
+class Brain {
+	
+	public:
+		Brain(void);
+		Brain(const Brain& Brain);
+		Brain& operator=(const Brain& Brain);
+		~Brain(void);
+	
+	private:
+		std::string* _ideas;
+	
+};
+
+#endif

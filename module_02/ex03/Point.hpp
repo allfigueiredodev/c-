@@ -1,7 +1,8 @@
-#ifndef POINT_CLASS_HPP
-#define	POINT_CLASS_HPP
+#ifndef POINT_HPP
+#define	POINT_HPP
 
-#include "Fixed.class.hpp"
+#include "Fixed.h"
+#include "Fixed.hpp"
 
 class Point {
 

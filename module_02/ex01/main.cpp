@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:12:43 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/25 19:40:57 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:41:21 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int main( void ) {
 	Fixed a;
-	Fixed const b( 16777216 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
-	a = Fixed( 1234.4321f );
+	Fixed const b(10);
+	Fixed const c(42.42f);
+	Fixed const d(b);
+	a = Fixed(1234.4321f);
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
@@ -29,25 +29,3 @@ int main( void ) {
 	
 	return 0;
 }
-
-// $> ./a.out
-// Default constructor called
-// Int constructor called
-// Float constructor called
-// Copy constructor called
-// Copy assignment operator called
-// Float constructor called
-// Copy assignment operator called
-// Destructor called
-// a is 1234.43
-// b is 10
-// c is 42.4219
-// d is 10
-// a is 1234 as integer
-// b is 10 as integer
-// c is 42 as integer
-// d is 10 as integer
-// Destructor called
-// Destructor called
-// Destructor called
-// Destructor called

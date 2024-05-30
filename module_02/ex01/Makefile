@@ -1,8 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/29 19:07:04 by aperis-p          #+#    #+#              #
+#    Updated: 2024/05/29 19:07:06 by aperis-p         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = Fixed
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
-SRC = main.cpp Fixed.class.cpp
+SRC = main.cpp Fixed.cpp
 
 OBJS = $(SRC:.cpp=.o)
 

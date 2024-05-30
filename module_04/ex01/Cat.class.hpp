@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:20:55 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/28 20:38:23 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/29 21:19:48 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CAT_CLASS_HPP
 
 #include "Polymorphism.h"
+#include "Brain.class.hpp"
 
 class Cat : public Animal {
 
@@ -25,8 +26,9 @@ class Cat : public Animal {
 		std::string getType(void) const;
 		void makeSound(void) const;
 	
-	protected:
+	private:
 		std::string type;
+		Brain* _catBrain;
 		
 };
 

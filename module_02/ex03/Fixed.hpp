@@ -1,19 +1,45 @@
 #ifndef FIXED_HPP
-#define FIXED_HPP
+# define FIXED_HPP
 
-#include <iostream>
-#include <string>
-#include <cmath>
+# include "Fixed.h"
 
-#define BLUE_GREEN	"\033[32;44m"
-#define MAG_YE		"\033[33;45m"
-#define RED     	"\033[1;31m"
-#define GREEN   	"\033[1;32m"
-#define YELLOW 		"\033[1;33m"
-#define BLUE    	"\033[1;34m"
-#define MAGENTA    	"\033[1;35m"
-#define CYAN    	"\033[1;36m"
-#define WHITE    	"\033[1;37m"
-#define DFT   		"\033[0m"
+class Fixed
+{
+  public:
+	Fixed(void);
+	Fixed(const Fixed &Fixed);
+	Fixed(const int i);
+	Fixed(const float i);
+	~Fixed(void);
+
+	int getRawBits(void) const;
+	void setRawBits(int const raw);
+	float toFloat(void) const;
+	int toInt(void) const;
+
+	Fixed&	operator=(const Fixed &Fixed);
+	Fixed	operator+(const Fixed &Fixed) const;
+	Fixed	operator-(const Fixed &Fixed) const;
+	Fixed	operator*(const Fixed &Fixed) const;
+	Fixed	operator/(const Fixed &Fixed) const;
+	bool	operator>(const Fixed &Fixed) const;
+	bool	operator<(const Fixed &Fixed) const;
+	bool	operator==(const Fixed &Fixed) const;
+	bool	operator!=(const Fixed &Fixed) const;
+	Fixed&	operator++(void);
+	Fixed	operator++(int);
+	Fixed&	operator--(void);
+	Fixed	operator--(int);
+	static	Fixed& min(Fixed& a, Fixed& b);
+	static	const Fixed& min(const Fixed& a, const Fixed& b);
+	static	Fixed& max(Fixed& a, Fixed& b);
+	static	const Fixed& max(const Fixed& a, const Fixed& b);
+
+  private:
+	int _rawBits;
+	static const int _fracBits;
+};
+
+std::ostream &operator<<(std::ostream &o, const Fixed &fixed);
 
 #endif
