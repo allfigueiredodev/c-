@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.class.hpp                                      :+:      :+:    :+:   */
+/*   Brain.class.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 19:20:55 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/29 20:38:40 by aperis-p         ###   ########.fr       */
+/*   Created: 2024/05/29 19:59:06 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/05/30 20:38:36 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_CLASS_HPP
-#define CAT_CLASS_HPP
+#ifndef BRAIN_CLASS_HPP
+#define BRAIN_CLASS_HPP
 
 #include "Polymorphism.h"
 
-class Cat : public Animal {
-
+class Brain {
+	
 	public:
-		Cat(void);
-		~Cat(void);
-		Cat(const Cat& Cat);
-		Cat& operator=(const Cat& rhs);
-		std::string getType(void) const;
-		void makeSound(void) const;
+		Brain(void);
+		Brain(const Brain& Brain);
+		Brain& operator=(const Brain& Brain);
+		~Brain(void);
 	
 	private:
-		std::string type;
-		
+		std::string _ideas[100];
+	
 };
 
 #endif

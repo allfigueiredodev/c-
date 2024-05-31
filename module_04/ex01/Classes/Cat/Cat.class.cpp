@@ -6,12 +6,11 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:22:07 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/29 21:28:55 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:45:27 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Polymorphism.h"
-#include "Cat.class.hpp"
 
 Cat::Cat(void) : type("Cat") {
 	std::cout << "Cat class default constructor called." << std::endl;
@@ -27,7 +26,7 @@ Cat::Cat(const Cat& Cat) {
 	std::cout << "Cat class copy constructor called." << std::endl;
 	this->type = Cat.type;
 	_catBrain = new Brain();
-	*_catBrain = *(Cat._catBrain);
+	*_catBrain = *(Cat._catBrain); 
 };
 
 Cat& Cat::operator=(const Cat& rhs) {
@@ -36,7 +35,7 @@ Cat& Cat::operator=(const Cat& rhs) {
 	{
 		this->type = rhs.type;
 		_catBrain = new Brain();
-		*_catBrain = *(Cat._catBrain);
+		*_catBrain = *(rhs._catBrain);
 	}
 	return (*this);
 };

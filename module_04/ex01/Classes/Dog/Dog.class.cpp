@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:22:07 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/29 21:30:36 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:45:48 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Dog& Dog::operator=(const Dog& rhs) {
 	if (this != &rhs){
 		this->type = rhs.type;
 		_dogBrain = new Brain();
-		*_dogBrain = *(Dog._dogBrain);
+		*_dogBrain = *(rhs._dogBrain);
 	}
 	return (*this);
 };

@@ -2,7 +2,8 @@ NAME = polymorphism
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -Wshadow -std=c++98 -g3
-SRC = main.cpp Animal.class.cpp Cat.class.cpp Dog.class.cpp
+SRC = main.cpp Classes/Animal/Animal.class.cpp Classes/Cat/Cat.class.cpp Classes/Dog/Dog.class.cpp \
+Classes/WrongCat/WrongCat.class.cpp Classes/WrongAnimal/WrongAnimal.class.cpp 
 
 OBJS = $(SRC:.cpp=.o)
 

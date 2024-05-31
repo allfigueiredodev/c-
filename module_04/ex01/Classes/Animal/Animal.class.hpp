@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:34:04 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/28 20:38:58 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/30 21:31:11 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Animal {
 	
 	public:
 		Animal(void);
-		~Animal(void);
+		virtual ~Animal(void);
 		Animal(const Animal& Animal);
 		Animal& operator=(const Animal& rhs);
 		virtual void makeSound(void) const;

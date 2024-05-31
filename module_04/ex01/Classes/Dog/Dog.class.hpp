@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:18:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/29 21:19:52 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/05/30 18:55:20 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define DOG_CLASS_HPP
 
 #include "Polymorphism.h"
-#include "Brain.class.hpp"
 
 class Dog : public Animal {
 
