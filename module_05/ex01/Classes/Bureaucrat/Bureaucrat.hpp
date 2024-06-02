@@ -3,8 +3,10 @@
 #define BUREAUCRAT_HPP
 
 #include "Bureaucrat.h"
+
 #include "Classes/Form/Form.hpp"
-#include "Classes/Bureaucrat/Bureaucrat.hpp"
+
+class Form;
 
 class Bureaucrat {
 

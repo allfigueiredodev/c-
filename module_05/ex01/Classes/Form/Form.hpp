@@ -4,14 +4,15 @@
 
 #include "Bureaucrat.h"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
-#include "Classes/Form/Form.hpp"
+
+class Bureaucrat;
 
 class Form {
 
     public:
         Form(void);
         Form(std::string name, int toSign, int toExecute);
-        Form(const Form& Form);
+        Form(const Form& from);
         Form& operator=(const Form& rhs);
         ~Form(void);
         class GradeTooHighException : public std::exception {
@@ -22,16 +23,16 @@ class Form {
         };
 		class GradeTooLowException : public std::exception {
             public:
-                explicit GradeTooLowException(const Form& Form) : _gradeToSign(Form._gradeToSign) {};
+                explicit GradeTooLowException(const Form& Form) : _grade(Form._gradeToSign) {};
 
                 virtual const char* what() const throw() {
-                    std::string returnMsg = "The grade is under the minimum acceptable value, which is ";
-                    returnMsg += std::to_string(_gradeToSign);
-                    returnMsg += " .";
+                    std::string returnMsg = "Bureaucrat grade is under the minimum acceptable value to sign, which is ";
+                    returnMsg += std::to_string(_grade);
+                    returnMsg += ".";
                     return (returnMsg.c_str());
                 }
             private:
-                int _gradeToSign;
+                int         _grade;
         };
         std::string getName(void) const;
         bool        getSigned(void) const;

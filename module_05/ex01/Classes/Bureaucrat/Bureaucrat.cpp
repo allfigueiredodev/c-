@@ -1,7 +1,7 @@
 
 #include "Bureaucrat.h"
-#include "Classes/Form/Form.hpp"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
+#include "Classes/Form/Form.hpp"
 
 Bureaucrat::Bureaucrat(void) : _name("Allesson Figueiredo"), _grade(1) {
     std::cout << "Bureaucrat class default constructor called." << std::endl;
@@ -25,7 +25,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
     }
 };
 
-Bureaucrat::Bureaucrat(const Bureaucrat& Bureaucrat){
+Bureaucrat::Bureaucrat(const Bureaucrat& Bureaucrat) {
     std::cout << "Bureaucrat class copy constructor called." << std::endl;
     *this = Bureaucrat;
 };
@@ -55,8 +55,11 @@ void        Bureaucrat::incrementGrade(void) {
     try {
         if (this->_grade - 1 < 1)
             throw Bureaucrat::GradeTooHighException();
-        else
+        else {
             this->_grade = this->_grade - 1;
+            std::cout << CYAN << "Bureaucrat " << this->_name
+            << " grade has increased to " << this->_grade << std::endl;
+        }
     }
     catch (const Bureaucrat::GradeTooHighException& e) {
         std::cout << RED << e.what() << DFT << std::endl;
@@ -67,8 +70,12 @@ void        Bureaucrat::decrementGrade(void) {
     try {
         if (this->_grade + 1 > 150)
             throw Bureaucrat::GradeTooLowException();      
-        else
+        else {
             this->_grade = this->_grade + 1;
+            std::cout << MAGENTA << "Bureaucrat " << this->_name
+            << " grade has decreased to " << this->_grade << std::endl;
+        }
+
     }
     catch (const Bureaucrat::GradeTooLowException& e) {
         std::cout << RED << e.what() << DFT << std::endl;

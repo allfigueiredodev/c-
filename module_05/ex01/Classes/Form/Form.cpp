@@ -10,15 +10,16 @@ Form::Form(std::string name, int toSign, int toExecute) : _name(name), _signed(f
     std::cout << "Form class parameterized constructor called." << std::endl;
 };
 
-Form::Form(const Form& Form) {
+Form::Form(const Form& from) : _gradeToSign(from._gradeToSign), _gradeToExecute(from._gradeToExecute) {
     std::cout << "Form class copy constructor called." << std::endl;
-    *this = Form;
+    *this = from;
 };
 
 Form& Form::operator=(const Form& rhs) {
     std::cout << "Form class copy assign operator called." << std::endl;
     if (this != &rhs){
-        //...
+        (int&)this->_gradeToSign = rhs._gradeToSign;
+        (int&)this->_gradeToExecute = rhs._gradeToExecute;
     }
     return *this;
 };
@@ -47,11 +48,13 @@ void        Form::beSigned(Bureaucrat& Bureaucrat) {
     try {
         if(Bureaucrat.getGrade() > this->getGradeToSign())
             throw Form::GradeTooLowException(*this);
-        else
+        else    
             this->_signed = true;
     }
     catch (const Form::GradeTooLowException& e) {
-        std::cout << RED << e.what() << DFT << std::endl;
+        std::cout << BLUE << Bureaucrat.getName() << DFT << " couldn't sign "
+        << YELLOW << this->_name << DFT << " because: \n" 
+        << RED << e.what() << DFT << std::endl;
     }
 }
 
