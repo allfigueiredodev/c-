@@ -7,19 +7,21 @@
 
 void TestPresidentialPardonForm(void){
 	PresidentialPardonForm pardonForm("Allesson");
-	std::cout << MAG_YE << pardonForm << DFT << std::endl;
+	std::cout << YELLOW << pardonForm << DFT << std::endl;
 };
 
-// void TestShrubberyCreationForm(void){
+void TestShrubberyCreationForm(void){
+	ShrubberyCreationForm ShrubForm("Allesson");
+	std::cout << YELLOW << ShrubForm << DFT << std::endl;
+}
 
-// }
-
-// void TestRobotomyRequestForm(void){
-
-// }
+void TestRobotomyRequestForm(void){
+	RobotomyRequestForm RobotForm("Allesson");
+	std::cout << YELLOW << RobotForm << DFT << std::endl;
+}
 
 int main(void) {
 	TestPresidentialPardonForm();
-	// TestShrubberyCreationForm();
-	// TestRobotomyRequestForm();
+	TestShrubberyCreationForm();
+	TestRobotomyRequestForm();
 }

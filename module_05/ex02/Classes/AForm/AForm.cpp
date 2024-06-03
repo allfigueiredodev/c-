@@ -1,6 +1,7 @@
 #include "Bureaucrat.h"
 #include "Classes/AForm/AForm.hpp"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
+#include <string.h>
 
 // CANONICAL CONSTRUCTORS/DESTRUCTOR
 
@@ -81,8 +82,14 @@ const char* AForm::GradeTooHighException::what() const throw() {
 };
 
 const char* AForm::GradeTooLowException::what() const throw() {
+	std::ostringstream outStr;
     std::string returnMsg = "Bureaucrat grade is under the minimum acceptable value to sign, which is ";
-    returnMsg += std::to_string(_grade);
+    outStr << _grade;
+	returnMsg += outStr.str();
     returnMsg += ".";
-    return (returnMsg.c_str());
+	int returnMsgSize = returnMsg.length() + 1;
+	char* completeMsg = new char[returnMsgSize];
+	strcpy(completeMsg, returnMsg.c_str());
+    // return (returnMsg.c_str());
+    return (completeMsg);
 }

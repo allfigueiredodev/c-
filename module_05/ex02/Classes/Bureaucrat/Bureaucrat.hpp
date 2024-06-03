@@ -34,7 +34,7 @@ class Bureaucrat {
 
             public:
                 virtual const char* what() const throw();
-        }
+        };
         void executeForm(AForm const & form);
 
     private:

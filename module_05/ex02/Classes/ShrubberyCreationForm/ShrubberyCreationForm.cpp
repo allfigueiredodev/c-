@@ -34,22 +34,22 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 
 // METHODS
 
-void    ShrubberyCreationForm::execute(Bureaucrat const & executor) {
-    try {
-        std::ofstream outfile(this->getTarget() + "_shrubbery");
-        if (outfile.fail())
+void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+	std::ofstream outfile((this->getTarget() + "_shrubbery").data());
+	try {
+        if (outfile.fail() || executor.getGrade() < this->getGradeToExecute())
             throw FailToOpenFileException();
     }
     catch (const FailToOpenFileException& e) {
         std::cerr << RED << e.what() << DFT << std::endl;
     }
-    oufile << ASCCI_TREE << std::endl;
-    oufile.close();
+    outfile << "test" << std::endl;
+    outfile.close();
 };
 
 // GETTERS/SETTERS
 
-std::string ShrubberyCreationForm::getTarget(void) {
+std::string ShrubberyCreationForm::getTarget(void) const {
     return (this->_target);
 };
 
@@ -57,4 +57,14 @@ std::string ShrubberyCreationForm::getTarget(void) {
 
 const char* ShrubberyCreationForm::FailToOpenFileException::what() const throw () {
     return ("Fail creating the file");
-} 
+}
+
+// OPERATOR OVERLOADS
+
+std::ostream& operator<<(std::ostream& o, const ShrubberyCreationForm& ShrubberyCreationForm) {
+    o << BLUE << ShrubberyCreationForm.getName() << DFT
+    << "\n" << "Signed: " << ShrubberyCreationForm.getSigned() << DFT
+    << "\n" << "Grade to sign: " << ShrubberyCreationForm.getGradeToSign() << DFT
+    << "\n" << "Grade to execute: " << ShrubberyCreationForm.getGradeToExecute() << DFT;
+	return (o);
+};

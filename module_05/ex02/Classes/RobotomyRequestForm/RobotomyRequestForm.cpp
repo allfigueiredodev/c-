@@ -18,7 +18,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& RobotomyRequ
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& rhs) {
     std::cout << "RobotomyRequestForm class copy assign operator called." << std::endl;
     if (this != &rhs){
-        this->target = rhs.target;
+        this->_target = rhs._target;
     }
     return *this;
 };
@@ -31,7 +31,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void) {
 
 void    RobotomyRequestForm::execute(Bureaucrat const & executor) const {
     try {
-        if (std::rand() % 2 == 0){
+        if (executor.getGrade() < this->getGradeToExecute () && std::rand() % 2 == 0) {
             std::cout << GREEN << "*Makes some drilling noises*\n"
             << this->_target << " has been robotomized successfully"  
             << DFT << std::endl;
@@ -39,13 +39,23 @@ void    RobotomyRequestForm::execute(Bureaucrat const & executor) const {
         else
             throw RobotomyRequestForm::RobotomizeFailedException();
     }
-    catch (const RobotomyRequestForm::RobotomizedFailedException& e) {
+    catch (const RobotomyRequestForm::RobotomizeFailedException& e) {
         std::cerr << RED << e.what() << DFT << std::endl;
     }
 };
 
 // EXCEPTIONS
 
-const char* RobotomyRequestForm::RobotomizeFailedException::what() cons throw {
+const char* RobotomyRequestForm::RobotomizeFailedException::what() const throw () {
     return ("The robotomotization has failed.");
 }
+
+// OPERATOR OVERLOADS
+
+std::ostream& operator<<(std::ostream& o, const RobotomyRequestForm& RobotomyRequestForm) {
+    o << BLUE << RobotomyRequestForm.getName() << DFT
+    << "\n" << "Signed: " << RobotomyRequestForm.getSigned() << DFT
+    << "\n" << "Grade to sign: " << RobotomyRequestForm.getGradeToSign() << DFT
+    << "\n" << "Grade to execute: " << RobotomyRequestForm.getGradeToExecute() << DFT;
+	return (o);
+};

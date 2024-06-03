@@ -2,6 +2,10 @@
 #ifndef SHRUBBERYCREATIONFORM_H
 #define SHRUBBERYCREATIONFORM_H
 
+#include "Bureaucrat.h"
+#include "Classes/AForm/AForm.hpp"
+#include "Classes/ShrubberyCreationForm/ShrubberyCreationForm.hpp"
+
 class ShrubberyCreationForm : public AForm {
 
     public:
@@ -11,15 +15,15 @@ class ShrubberyCreationForm : public AForm {
         ShrubberyCreationForm& operator=(const ShrubberyCreationForm& rhs);
         ~ShrubberyCreationForm(void);
         
-        void    execute(Bureaucrat const & executor);
+        void    execute(Bureaucrat const & executor) const;
 
-        std::string getTarget(void);
+        std::string getTarget(void) const;
     class FailToOpenFileException : public std::exception {
         
         public:
-            virtual const char* what() throw();
+            virtual const char* what() const throw();
             
-    }
+    };
 
     private:
         std::string _target;

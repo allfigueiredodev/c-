@@ -1,4 +1,3 @@
-
 #ifndef AFORM_HPP
 #define AFORM_HPP
 
@@ -31,7 +30,7 @@ class AForm {
         int             getGradeToSign(void) const;
         int             getGradeToExecute(void) const;
         void            beSigned(Bureaucrat& Bureaucrat);
-        virtual void    execute(Bureaucrat const & executor) const = 0;
+        virtual void    execute(Bureaucrat const & executor) const = 0;	
 
     private:
         const std::string   _name;

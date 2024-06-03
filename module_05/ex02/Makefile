@@ -2,7 +2,7 @@ NAME = bureaucrat
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -Wshadow -std=c++98 -g3
-SRC = main.cpp Classes/Bureaucrat/Bureaucrat.cpp Classes/Form/Form.cpp Classes/PresidentialPardonForm/PresidentialPardonForm.cpp \
+SRC = main.cpp Classes/Bureaucrat/Bureaucrat.cpp Classes/AForm/AForm.cpp Classes/PresidentialPardonForm/PresidentialPardonForm.cpp \
 Classes/RobotomyRequestForm/RobotomyRequestForm.cpp Classes/ShrubberyCreationForm/ShrubberyCreationForm.cpp
 
 OBJS = $(SRC:.cpp=.o)

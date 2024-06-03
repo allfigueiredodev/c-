@@ -60,6 +60,15 @@
 		"vector": "cpp",
 		"*.tcc": "cpp",
 		"hashtable": "cpp",
-		"fstream": "cpp"
+		"fstream": "cpp",
+		"bit": "cpp",
+		"compare": "cpp",
+		"concepts": "cpp",
+		"deque": "cpp",
+		"memory_resource": "cpp",
+		"numeric": "cpp",
+		"optional": "cpp",
+		"random": "cpp",
+		"ranges": "cpp"
 	}
 }
