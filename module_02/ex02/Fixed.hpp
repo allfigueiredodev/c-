@@ -3,8 +3,8 @@
 
 # include "Fixed.h"
 
-class Fixed
-{
+class Fixed {
+
   public:
 	Fixed(void);
 	Fixed(const Fixed &Fixed);
@@ -13,7 +13,8 @@ class Fixed
 	~Fixed(void);
 
 	int getRawBits(void) const;
-	void setRawBits(int const raw);
+	void setIntRawBits(int const raw);
+	void setFloatRawBits(float const raw);
 	float toFloat(void) const;
 	int toInt(void) const;
 
@@ -24,6 +25,8 @@ class Fixed
 	Fixed	operator/(const Fixed &Fixed) const;
 	bool	operator>(const Fixed &Fixed) const;
 	bool	operator<(const Fixed &Fixed) const;
+	bool	operator>=(const Fixed &Fixed) const;
+	bool	operator<=(const Fixed &Fixed) const;
 	bool	operator==(const Fixed &Fixed) const;
 	bool	operator!=(const Fixed &Fixed) const;
 	Fixed&	operator++(void);

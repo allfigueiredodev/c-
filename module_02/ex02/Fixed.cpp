@@ -74,6 +74,20 @@ bool Fixed::operator<(const Fixed& Fixed) const {
 	return (false);
 }
 
+bool Fixed::operator>=(const Fixed& Fixed) const {
+	std::cout << MAGENTA << "comparison overload > called" << DFT << std::endl;
+	if (this->_rawBits >= Fixed.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator<=(const Fixed& Fixed) const {
+	std::cout << MAGENTA << "comparison overload < called" << DFT << std::endl;
+	if (this->_rawBits <= Fixed.getRawBits())
+		return (true);
+	return (false);
+}
+
 bool Fixed::operator==(const Fixed& Fixed) const {
 	std::cout << MAGENTA << "comparison overload == called" << DFT << std::endl;
 	if (this->_rawBits == Fixed.getRawBits())
@@ -129,8 +143,12 @@ int Fixed::getRawBits(void) const {
 	return (this->_rawBits);
 };
 
-void Fixed::setRawBits(int const raw) {
-	this->_rawBits = raw;
+void Fixed::setIntRawBits(int const raw) {
+	this->_rawBits = raw << _fracBits;
+};
+
+void Fixed::setFloatRawBits(float const raw) {
+	this->_rawBits = (int)roundf(raw * (1 << _fracBits));
 };
 
 // Type converters
