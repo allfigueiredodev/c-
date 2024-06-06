@@ -6,14 +6,15 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:22:07 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/05 20:59:46 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:51:47 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Polymorphism.h"
 
-Cat::Cat(void) : _type("Cat") {
+Cat::Cat(void) {
 	std::cout << "Cat class default constructor called." << std::endl;
+	this->_type = "Cat";
 };
 
 Cat::~Cat(void) {

@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:18:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/05 20:58:43 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:54:25 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ class Dog : public Animal {
 		Dog& operator=(const Dog& rhs);
 		std::string getType(void) const;
 		void makeSound(void) const;
-	
-	private:
-		std::string _type;
 		
 };
 
