@@ -13,7 +13,7 @@ WrongCat::WrongCat(const WrongCat& WrongCat) {
 WrongCat& WrongCat::operator=(const WrongCat& rhs) {
     std::cout << "WrongCat class copy assign operator called." << std::endl;
     if (this != &rhs){
-        this->type = rhs.type;
+        this->_type = rhs._type;
     }
     return *this;
 };
@@ -24,4 +24,8 @@ WrongCat::~WrongCat(void) {
 
 void WrongCat::makeSound(void) const {
 	std::cout << "*Weird cat noise*" << std::endl;
+};
+
+std::string WrongCat::getType(void) const {
+	return (this->_type);
 };

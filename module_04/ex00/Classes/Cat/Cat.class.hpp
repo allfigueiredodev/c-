@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:20:55 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/30 19:38:46 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:00:16 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Cat : public Animal {
 		void makeSound(void) const;
 	
 	private:
-		std::string type;
+		std::string _type;
 		
 };
 

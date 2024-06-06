@@ -6,13 +6,13 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:22:07 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/28 20:37:48 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/05 20:59:02 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Polymorphism.h"
 
-Dog::Dog(void) : type("Dog") {
+Dog::Dog(void) : _type("Dog") {
 	std::cout << "Dog class default constructor called." << std::endl;
 };
 
@@ -28,13 +28,13 @@ Dog::Dog(const Dog& Dog) {
 Dog& Dog::operator=(const Dog& rhs) {
 	std::cout << "Dog class copy assign operator called." << std::endl;
 	if (this != &rhs){
-		this->type = rhs.type;
+		this->_type = rhs._type;
 	}
 	return (*this);
 };
 
 std::string Dog::getType(void) const {
-	return (this->type);
+	return (this->_type);
 };
 
 void Dog::makeSound(void) const {

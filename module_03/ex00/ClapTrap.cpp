@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 18:39:02 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/27 22:06:39 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:17:00 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@
 	
 	void ClapTrap::setAttackDamage(unsigned int amount) {
 		_attackDamage = amount;
-	}
+	};
 	
 	unsigned int ClapTrap::getAttackDamage(void) {
 		return (_attackDamage);
-	}
+	};
 	
 	unsigned int ClapTrap::getEnergyPoints(void) {
 		return (_energyPoints);
-	}
+	};

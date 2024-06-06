@@ -75,6 +75,21 @@ bool Fixed::operator<(const Fixed& Fixed) const {
 	return (false);
 }
 
+
+bool Fixed::operator>=(const Fixed& Fixed) const {
+	std::cout << MAGENTA << "comparison overload > called" << DFT << std::endl;
+	if (this->_rawBits >= Fixed.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool Fixed::operator<=(const Fixed& Fixed) const {
+	std::cout << MAGENTA << "comparison overload < called" << DFT << std::endl;
+	if (this->_rawBits <= Fixed.getRawBits())
+		return (true);
+	return (false);
+}
+
 bool Fixed::operator==(const Fixed& Fixed) const {
 	std::cout << MAGENTA << "comparison overload == called" << DFT << std::endl;
 	if (this->_rawBits == Fixed.getRawBits())

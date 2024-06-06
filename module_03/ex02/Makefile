@@ -22,4 +22,10 @@ fclean: clean
 
 re: fclean all
 
+run: all
+	@clear
+	@valgrind --show-leak-kinds=all --leak-check=full -q ./$(NAME)
+	@rm -rf $(OBJS)
+	@rm -f $(NAME)
+
 .PHONY: all clean fclean re
