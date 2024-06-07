@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:22:07 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/30 19:45:48 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/07 00:51:16 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,10 @@ std::string Dog::getType(void) const {
 void Dog::makeSound(void) const {
 	std::cout << "WOOF!!!WOOF!!!" << std::endl;
 }
+
+void Dog::tellIdeas(void) {
+	int i = 0;
+	
+	while (this->_dogBrain->getIdeas(i++).empty() == false)
+		std::cout << GREEN << this->_dogBrain->getIdeas(i) << DFT << std::endl; 	
+};

@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:44:14 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/30 18:55:50 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/07 01:22:11 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 #include <string>
 #include <iostream>
-#include "Classes/Animal/Animal.class.hpp"
 #include "Classes/Brain/Brain.class.hpp"
+#include "Classes/Animal/Animal.class.hpp"
 #include "Classes/Cat/Cat.class.hpp"
 #include "Classes/Dog/Dog.class.hpp"
 
