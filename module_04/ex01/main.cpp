@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:33:31 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/07 11:12:20 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/07 21:35:40 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,23 @@
 	
 void	SubjectDeepCopyTest(){
 	Cat catA = Cat();
-	// Cat* catB(catA);
+	// Cat catB(catA);
 	Cat catC;
 	catC = catA;
-	Cat catD(catA);
+	// Cat* catD(catA);
 	// Cat* catD = new Cat();
 	// std::cout << "catA adress: " << catA << std::endl;
 	// std::cout << "catB adress: " << catB << std::endl;
 	// std::cout << "catC adress: " << catC << std::endl;
 	// std::cout << "catD adress: " << catD << std::endl;
 	catA.printBrainAdress();
-	// catB->printBrainAdress();
+	// catB.printBrainAdress();
 	catC.printBrainAdress();
 	// catD->printBrainAdress();
-	catD.printBrainAdress();
+	// catD->printBrainAdress();
+	// delete catA;
+	// delete catB;
+	// delete catC;
 }
 
 int main()
