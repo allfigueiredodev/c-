@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:18:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/31 07:54:29 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:35:41 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ class Dog : public AAnimal {
 		Dog(void);
 		~Dog(void);
 		Dog(const Dog& Dog);
-		Dog& operator=(const Dog& rhs);
+		Dog& 		operator=(const Dog& rhs);
 		std::string getType(void) const;
-		void makeSound(void) const;
-	
+		void 		makeSound(void) const;
+		void 		tellIdeas(void);
+		void 		printBrainAdress(void);
+		
 	private:
 		std::string type;
 		Brain* _dogBrain;

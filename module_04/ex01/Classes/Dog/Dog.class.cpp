@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:22:07 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/08 01:40:43 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:26:28 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Dog::~Dog(void) {
 
 Dog::Dog(const Dog& Dog) {
 	std::cout << "Dog class copy constructor called." << std::endl;
+	this->type = Dog.type;
 	_dogBrain = new Brain();
 	*_dogBrain = *(Dog._dogBrain);
 };
@@ -49,13 +50,13 @@ void Dog::makeSound(void) const {
 	std::cout << "WOOF!!!WOOF!!!" << std::endl;
 };
 
-void Dog::printBrainAdress(void) {
-	std::cout << &this->_dogBrain << std::endl;
-};
-
 void Dog::tellIdeas(void) {
 	int i = 0;
 	
-	while (this->_dogBrain->getIdeas(i++).empty() == false)
-		std::cout << BLUE << this->_dogBrain->getIdeas(i) << DFT << std::endl; 	
+	while (i < MAX_IDEAS)
+		std::cout << BLUE << this->_dogBrain->getIdeas(i++) << DFT << std::endl; 	
+};
+
+void Dog::printBrainAdress(void) {
+	std::cout << &this->_dogBrain << std::endl;
 };

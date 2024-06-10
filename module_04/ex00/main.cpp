@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:33:31 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/05 21:54:48 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:55:33 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,13 @@ void CatSoundTest(void) {
 
 void WrongAnimalWrongCatTest(void) {
 	const WrongAnimal* x = new WrongCat();
+	const WrongCat* y = new WrongCat();
 	std::cout << x->getType() << " " << std::endl;
 	x->makeSound();
+	std::cout << y->getType() << " " << std::endl;
+	y->makeSound();
 	delete x;
+	delete y;
 };
 
 int main() {

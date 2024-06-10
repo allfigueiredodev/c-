@@ -6,11 +6,12 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 19:59:06 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/30 21:41:00 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:45:10 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Polymorphism.h"
+#include <cstdio>
 
 Brain::Brain(void){
 	std::cout << "Brain class default constructor called." << std::endl;
@@ -33,4 +34,16 @@ Brain& Brain::operator=(const Brain& rhs){
 
 Brain::~Brain(void){
 	std::cout << "Brain class destructor called." << std::endl;
+};
+
+std::string Brain::getIdeas(int i) {
+	return (this->_ideas[i]);
+};
+
+
+void Brain::setIdeas(std::string idea, int i){
+	this->_ideas[i] = idea;
+	char buffer[5];
+	sprintf(buffer, "%d", i);
+	this->_ideas[i] += buffer;
 };

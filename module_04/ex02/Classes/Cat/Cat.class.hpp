@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:20:55 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/31 07:54:23 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:35:38 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ class Cat : public AAnimal {
 		Cat(void);
 		~Cat(void);
 		Cat(const Cat& Cat);
-		Cat& operator=(const Cat& rhs);
+		Cat& 		operator=(const Cat& rhs);
 		std::string getType(void) const;
-		void makeSound(void) const;
-	
+		void 		makeSound(void) const;
+		void 		tellIdeas(void);
+		void		printBrainAdress(void);
+
 	private:
 		std::string type;
 		Brain* _catBrain;

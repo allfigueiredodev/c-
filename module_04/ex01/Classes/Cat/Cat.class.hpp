@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:20:55 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/08 01:26:36 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:46:34 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,5 @@ class Cat : public Animal {
 		Brain* _catBrain;
 		
 };
-
-// std::ostream&	operator<<(std::ostream o, const Cat& cat);
 
 #endif

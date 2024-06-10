@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:22:07 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/08 01:42:01 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:19:00 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ Cat::~Cat(void) {
 Cat::Cat(const Cat& Cat) {
 	std::cout << "Cat class copy constructor called." << std::endl;
 	this->type = Cat.type;
-	// delete Cat._catBrain;
 	_catBrain = new Brain();
 	*_catBrain = *(Cat._catBrain);
 };
@@ -56,16 +55,10 @@ void Cat::makeSound(void) const {
 void Cat::tellIdeas(void) {
 	int i = 0;
 	
-	while (this->_catBrain->getIdeas(i++).empty() == false)
-		std::cout << MAGENTA << this->_catBrain->getIdeas(i) << DFT << std::endl; 	
+	while (i < MAX_IDEAS)
+		std::cout << MAGENTA << this->_catBrain->getIdeas(i++) << DFT << std::endl; 	
 };
 
 void	Cat::printBrainAdress(void) {
 	std::cout << &this->_catBrain << std::endl;
 };
-
-// std::ostream&	operator<<(std::ostream& o, const Cat& cat) {
-// 	o << cat.getBrainAdress();
-// 	return (o);
-// };
-	

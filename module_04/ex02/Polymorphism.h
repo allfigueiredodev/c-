@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:44:14 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/05/30 18:55:50 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/10 17:36:29 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@
 #define CYAN    	"\033[1;36m"
 #define WHITE    	"\033[1;37m"
 #define DFT   		"\033[0m"
+#define MAX_IDEAS	100
 
 #endif
