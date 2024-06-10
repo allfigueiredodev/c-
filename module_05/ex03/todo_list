@@ -1,0 +1,10 @@
+1) Create the Intern class:
+	• it has to have the Form* makeForm(std::string name, std::string target) function;
+	• The first string argument is the name of a form, and second is the target
+	of the form;
+	• The name of the object that will be returned is the same name passed as 
+	the first argument of the makeForm function, the object has to have its
+	target attribute initialized with the second argument of the function;
+	• If there is no Form with the name passed as the first argument the program
+	should print a explicit error, if it does, it should print something like:
+	Intern creates <form>

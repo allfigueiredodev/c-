@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:22:07 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/07 21:43:29 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/08 01:42:01 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Cat::Cat(void) : type("Cat") {
 	std::cout << "Cat class default constructor called." << std::endl;
 	_catBrain = new Brain();
 	for (int i = 0; i < 100; i++){
-		_catBrain->setIdeas("ideia number: ", i) ;
+		_catBrain->setIdeas("Cat ideia number: ", i) ;
 	}
 };
 
@@ -57,7 +57,7 @@ void Cat::tellIdeas(void) {
 	int i = 0;
 	
 	while (this->_catBrain->getIdeas(i++).empty() == false)
-		std::cout << GREEN << this->_catBrain->getIdeas(i) << DFT << std::endl; 	
+		std::cout << MAGENTA << this->_catBrain->getIdeas(i) << DFT << std::endl; 	
 };
 
 void	Cat::printBrainAdress(void) {
