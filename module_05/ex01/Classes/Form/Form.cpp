@@ -8,7 +8,7 @@ Form::Form(void) : _name("Empty Form"), _signed(false), _gradeToSign(20), _grade
 
 Form::Form(std::string name, int toSign, int toExecute) : _name(name), _signed(false), _gradeToSign(toSign), _gradeToExecute(toExecute) {
     std::cout << "Form class parameterized constructor called." << std::endl;
-};
+}; // maybe there is a problem here, try to instantiate with more than 150 or less than 1 to see what happens.
 
 Form::Form(const Form& from) : _gradeToSign(from._gradeToSign), _gradeToExecute(from._gradeToExecute) {
     std::cout << "Form class copy constructor called." << std::endl;

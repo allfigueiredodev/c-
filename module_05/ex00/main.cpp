@@ -1,5 +1,14 @@
 #include "Bureaucrat.h"
 
+void decrementGradeOverLimitTest(){
+	
+}
+
+void incrementGradeOverLimitTest(){
+	
+}
+
+
 int main(void) {
 	Bureaucrat test;
 	Bureaucrat test2("qwerty", 148);

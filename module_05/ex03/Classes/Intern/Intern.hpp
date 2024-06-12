@@ -16,7 +16,7 @@ class Intern {
         Intern(const Intern& Intern);
         Intern& operator=(const Intern& rhs);
         ~Intern(void);
-        AForm* makeForm(std::string name, std::string target);
+        AForm* makeForm(std::string name, std::string target); // try run this as private and check if any test breaks
 
     private:
 
