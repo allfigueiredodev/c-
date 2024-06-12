@@ -22,9 +22,31 @@ ScalarConverter::~ScalarConverter(void) {
     std::cout << "ScalarConverter class destructor called." << std::endl;
 };
 
-ScalarConverter::convert(std::string value){
-    // • char
-    // • int
-    // • float
-    // • double
+void ScalarConverter::convert(std::string value) {
+    int i = -1;
+
+    while (i != -1 && i < TOTAL_TYPES) {
+        i = 
+    }
+
+    // • isChar
+    // • isInt
+    // • isFloat
+    // • isDouble
+};
+
+int ScalarConverter::isChar(std::string value){
+
+};
+
+int ScalarConverter::isInt(std::string value){
+
+};
+
+int ScalarConverter::isFloat(std::string value){
+
+};
+
+int ScalarConverter::isDouble(std::string value){
+
 };
