@@ -17,20 +17,20 @@ class Form {
         ~Form(void);
         class GradeTooHighException : public std::exception {
             public:
-                virtual const char* what() const throw() {
-                    return ("The current grade is too high, the maximum grade possible is 1.");
-                }
+                virtual const char* what() const throw();
         };
 		class GradeTooLowException : public std::exception {
             public:
-                explicit GradeTooLowException(const Form& Form) : _grade(Form._gradeToSign) {};
+                // explicit GradeTooLowException(const Form& Form) : _grade(Form._gradeToSign) {};
+                explicit GradeTooLowException(const Form& Form);
 
-                virtual const char* what() const throw() {
-                    std::string returnMsg = "Bureaucrat grade is under the minimum acceptable value to sign, which is ";
-                    returnMsg += std::to_string(_grade);
-                    returnMsg += ".";
-                    return (returnMsg.c_str());
-                }
+                virtual const char* what() const throw();
+                // virtual const char* what() const throw() {
+                //     std::string returnMsg = "Bureaucrat grade is under the minimum acceptable value to sign, which is ";
+                //     returnMsg += std::to_string(_grade);
+                //     returnMsg += ".";
+                //     return (returnMsg.c_str());
+                // }
             private:
                 int         _grade;
         };

@@ -96,6 +96,22 @@ void        Bureaucrat::signForm(Form& Form) {
     }
 };
 
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+    return ("The value will decrement over the limits, the lowest grade possible is 150.");
+};
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+    return ("The value will increment over the limits, the highest grade possible is 1.");
+};
+
+const char* Bureaucrat::AtConstructionGradeTooLowException::what() const throw() {
+    return ("The value is over the limits, the lowest grade possible is 150.");
+};
+
+const char* Bureaucrat::AtConstructionGradeTooHighException::what() const throw() {
+    return ("The value is over the limits, the highest grade possible is 1.");
+};
+
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& Bureaucrat) {
     o << BLUE << Bureaucrat.getName() << DFT << ", bureaucrat grade " << GREEN << Bureaucrat.getGrade() << DFT << ".";
 	return (o);

@@ -1,6 +1,7 @@
 #include "Bureaucrat.h"
 #include "Classes/Form/Form.hpp"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
+#include <cstdlib>
 
 Form::Form(void) : _name("Empty Form"), _signed(false), _gradeToSign(20), _gradeToExecute(5) {
     std::cout << "Form class default constructor called." << std::endl;
@@ -56,7 +57,21 @@ void        Form::beSigned(Bureaucrat& Bureaucrat) {
         << YELLOW << this->_name << DFT << " because: \n" 
         << RED << e.what() << DFT << std::endl;
     }
-}
+};
+
+char const * Form::GradeTooHighException::what() const throw() {
+		return ("The current grade is too high, the maximum grade possible is 1.");
+};
+
+explicit Form::GradeTooLowException(const Form& Form) : _grade(Form._gradeToSign) {};
+
+char const * Form::GradeTooLowException::what() const throw() {
+
+	std::string returnMsg = "Bureaucrat grade is under the minimum acceptable value to sign, which is ";
+	returnMsg += std::to_string(_grade);
+	returnMsg += ".";
+	return (returnMsg.c_str());
+};
 
 std::ostream& operator<<(std::ostream& o, const Form& Form) {
     o << BLUE << Form.getName() << DFT
@@ -65,3 +80,4 @@ std::ostream& operator<<(std::ostream& o, const Form& Form) {
     << "\n" << "Grade to execute: " << Form.getGradeToExecute() << DFT;
 	return (o);
 };
+

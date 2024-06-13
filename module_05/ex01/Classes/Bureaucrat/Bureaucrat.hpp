@@ -24,16 +24,22 @@ class Bureaucrat {
         class GradeTooLowException : public std::exception {
             
             public:
-                virtual const char* what() const throw() {
-                    return ("The value will decrement over the limits, the lowest grade possible is 150.");
-                }
+                virtual const char* what() const throw() ;
         };
         class GradeTooHighException : public std::exception {
             
             public:
-                virtual const char* what() const throw() {
-                    return ("The value will increment over the limits, the highest grade possible is 1.");
-                }
+                virtual const char* what() const throw();
+        };
+        class AtConstructionGradeTooLowException : public std::exception {
+            
+            public:
+                virtual const char* what() const throw() ;
+        };
+        class AtConstructionGradeTooHighException : public std::exception {
+            
+            public:
+                virtual const char* what() const throw();
         };
 
     private:
