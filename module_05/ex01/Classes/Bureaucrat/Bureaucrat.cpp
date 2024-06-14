@@ -2,6 +2,7 @@
 #include "Bureaucrat.h"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
 #include "Classes/Form/Form.hpp"
+#include <cstdlib>
 
 Bureaucrat::Bureaucrat(void) : _name("Allesson Figueiredo"), _grade(1) {
     std::cout << "Bureaucrat class default constructor called." << std::endl;
@@ -9,20 +10,12 @@ Bureaucrat::Bureaucrat(void) : _name("Allesson Figueiredo"), _grade(1) {
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
     std::cout << "Bureaucrat class named constructor called." << std::endl;    
-    try {
-        if (grade > 150)
-            throw Bureaucrat::GradeTooLowException();
-        else if (grade < 1)
-            throw Bureaucrat::GradeTooHighException();
-        else
-            _grade = grade;
-    }
-    catch (const Bureaucrat::GradeTooLowException& e) {
-        std::cout << e.what() << std::endl;
-    }
-    catch (const Bureaucrat::GradeTooHighException& e) {
-        std::cout << e.what() << std::endl;
-    }
+	if (grade > 150)
+		throw Bureaucrat::AtConstructionGradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::AtConstructionGradeTooHighException();
+	else
+		_grade = grade;
 };
 
 Bureaucrat::Bureaucrat(const Bureaucrat& Bureaucrat) {
@@ -84,9 +77,13 @@ void        Bureaucrat::decrementGrade(void) {
 
 void        Bureaucrat::signForm(Form& Form) {
     try {
-        if (Form.getSigned())
+        if (!Form.getSigned() && this->getGrade() < Form.getGradeToSign()){
+			Form.beSigned(*this);
             std::cout << BLUE << this->getName() << DFT << " signed " << GREEN << Form.getName() << DFT << std::endl;
-        else
+		}
+        else if (Form.getSigned())
+			std::cout << YELLOW << "Form " << Form.getName() << " is signed already." << DFT << std::endl;
+		else
             throw Form::GradeTooLowException(Form);
     }
     catch (const Form::GradeTooLowException& e) {
