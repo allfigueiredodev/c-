@@ -1,10 +1,12 @@
 #include "Bureaucrat.h"
 #include "Classes/Form/Form.hpp"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
-// #include <cstdlib>
-// #include <cstring>
-// #include <string.h>
+#include <cstdlib>
+#include <cstring>
+#include <string.h>
 #include <stdlib.h>
+#include <iostream>
+#include <sstream>
 
 Form::Form(void) : _name("Empty Form"), _signed(false), _gradeToSign(20), _gradeToExecute(5) {
     std::cout << "Form class default constructor called." << std::endl;
@@ -82,14 +84,13 @@ char const * Form::GradeTooHighException::what() const throw() {
 Form::GradeTooLowException::GradeTooLowException(const Form& Form) : _grade(Form._gradeToSign) {};
 
 char const * Form::GradeTooLowException::what() const throw() {
-	char* concat;
-	std::string returnMsg = "Bureaucrat grade is under the minimum acceptable value to sign, which is ";
-	returnMsg +=  itoa(_grade);
+	static std::string returnMsg;
+	std::stringstream stream;
+	returnMsg = "Bureaucrat grade is under the minimum acceptable value to sign, which is ";
+	stream << _grade;
+	returnMsg += stream.str();
 	returnMsg += ".";
-	concat = new char[returnMsg.length() + 1];
-	strcpy(concat, returnMsg.c_str());
-	return (concat);
-    https://www.freecodecamp.org/news/how-to-convert-an-int-to-a-string-in-cpp/
+	return (returnMsg.c_str());
 };
 
 const char* Form::AtConstructionGradeTooLowException::what() const throw() {

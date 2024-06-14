@@ -1,33 +1,31 @@
 #include "Bureaucrat.h"
 
-void decrementGradeOverLimitTest(){
-	
+void	defaultConstructorTest(void){
+	Bureaucrat bZero;
+	std::cout << CYAN << "The standard bureaucrat name is: " << bZero.getName()
+	<< " and his standard grade is: " << bZero.getGrade() << DFT << std::endl;
 }
 
-void incrementGradeOverLimitTest(){
-	
+void	decrementGradeOverLimitTest(void){
+	Bureaucrat bOne("bOne", 2);
+	bOne.incrementGrade();
+	bOne.incrementGrade();
 }
 
+void	incrementGradeOverLimitTest(void){
+	Bureaucrat bTwo("bTwo", 149);
+	bTwo.decrementGrade();
+	bTwo.decrementGrade();
+}
+
+void	instantiateOverLimitsTest(void){
+	Bureaucrat over("OVER", 160); 
+	Bureaucrat under("UNDER", 0); 
+}
 
 int main(void) {
-	Bureaucrat test;
-	Bureaucrat test2("qwerty", 148);
-	Bureaucrat test3("asdfg", 3);
-	std::cout << test << std::endl;
-	std::cout << test2 << std::endl;
-	std::cout << test3 << std::endl;
-	test2.decrementGrade();
-	std::cout << test2 << std::endl;
-	test2.decrementGrade();
-	std::cout << test2 << std::endl;
-	test2.decrementGrade();
-	std::cout << test2 << std::endl;
-	test3.incrementGrade();
-	std::cout << test3 << std::endl;
-	test3.incrementGrade();
-	std::cout << test3 << std::endl;
-	test3.incrementGrade();
-	std::cout << test3 << std::endl;
-	test3.incrementGrade();
-	std::cout << test3 << std::endl;
+	defaultConstructorTest();
+	decrementGradeOverLimitTest();
+	incrementGradeOverLimitTest();
+	instantiateOverLimitsTest();
 }

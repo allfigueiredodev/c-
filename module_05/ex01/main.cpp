@@ -49,9 +49,9 @@ void instantiateFormOverGradeLimitsTest(void){
 }
 
 int main(void) {
-	// beSignedFormTest();
-	// signFormTest();
+	beSignedFormTest();
+	signFormTest();
 	bureaucratUnderGradeTest();
-	// instantiateBureaucratOverGradeLimitsTest();
-	// instantiateFormOverGradeLimitsTest();
+	instantiateBureaucratOverGradeLimitsTest();
+	instantiateFormOverGradeLimitsTest();
 }
