@@ -16,10 +16,16 @@ void signFormTest(void){
 	zidane.signForm(ffix);
 }
 
-void instantiateOverLimitTest(void){
+void bureaucratUnderGradeTest(){
+	Form ffix("FFIX", 10, 5);
+	Bureaucrat zidane("Zidane", 150);
+	zidane.signForm(ffix);
+};
+
+void instantiateBureaucratOverGradeLimitsTest(void){
+	// Bureaucrat zidane("Zidane", 188); // try to instantiate the class without the try block will reproduce an abort trap
 	try {
 		Bureaucrat zidane("Zidane", 188);
-		std::cout << MAGENTA << "GRADE: " << zidane.getGrade() << DFT << std::endl;
 	}
 	catch (const Bureaucrat::AtConstructionGradeTooHighException& e){
 		std::cout << RED << e.what() << DFT << std::endl;
@@ -29,8 +35,23 @@ void instantiateOverLimitTest(void){
 	}
 }
 
+void instantiateFormOverGradeLimitsTest(void){
+	// Form ffix("FFIX", 188, 200); // try to instantiate the class without the try block will reproduce an abort trap
+	try {
+		Form ffix("FFIX", 188, 200);
+	}
+	catch (const Form::AtConstructionGradeTooHighException& e){
+		std::cout << RED << e.what() << DFT << std::endl;
+	}
+	catch (const Form::AtConstructionGradeTooLowException& e){
+		std::cout << RED << e.what() << DFT << std::endl;
+	}
+}
+
 int main(void) {
-	beSignedFormTest();
-	signFormTest();
-	instantiateOverLimitTest();
+	// beSignedFormTest();
+	// signFormTest();
+	bureaucratUnderGradeTest();
+	// instantiateBureaucratOverGradeLimitsTest();
+	// instantiateFormOverGradeLimitsTest();
 }

@@ -1,9 +1,10 @@
 #include "Bureaucrat.h"
 #include "Classes/Form/Form.hpp"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
-#include <cstdlib>
-#include <cstring>
-#include <string.h>
+// #include <cstdlib>
+// #include <cstring>
+// #include <string.h>
+#include <stdlib.h>
 
 Form::Form(void) : _name("Empty Form"), _signed(false), _gradeToSign(20), _gradeToExecute(5) {
     std::cout << "Form class default constructor called." << std::endl;
@@ -83,11 +84,12 @@ Form::GradeTooLowException::GradeTooLowException(const Form& Form) : _grade(Form
 char const * Form::GradeTooLowException::what() const throw() {
 	char* concat;
 	std::string returnMsg = "Bureaucrat grade is under the minimum acceptable value to sign, which is ";
-	returnMsg += static_cast<char>(_grade);
+	returnMsg +=  itoa(_grade);
 	returnMsg += ".";
 	concat = new char[returnMsg.length() + 1];
 	strcpy(concat, returnMsg.c_str());
 	return (concat);
+    https://www.freecodecamp.org/news/how-to-convert-an-int-to-a-string-in-cpp/
 };
 
 const char* Form::AtConstructionGradeTooLowException::what() const throw() {
