@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/14 23:23:39 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/06/14 23:23:42 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
@@ -32,6 +44,16 @@ class Bureaucrat {
         };
         class FormExecutionFailedException : public std::exception {
 
+            public:
+                virtual const char* what() const throw();
+        };
+		class AtConstructionGradeTooLowException : public std::exception {
+            
+            public:
+                virtual const char* what() const throw() ;
+        };
+        class AtConstructionGradeTooHighException : public std::exception {
+            
             public:
                 virtual const char* what() const throw();
         };

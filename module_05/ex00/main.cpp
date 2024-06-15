@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/14 23:18:03 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/06/14 23:30:35 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.h"
 
 void	defaultConstructorTest(void){
@@ -19,7 +31,7 @@ void	incrementGradeOverLimitTest(void){
 }
 
 void	instantiateOverLimitsTest(void){
-	Bureaucrat over("OVER", 160); 
+	Bureaucrat over("OVER", 160); // this will cause an abort (core dump);
 	Bureaucrat under("UNDER", 0); 
 }
 

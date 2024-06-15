@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:44:14 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/08 18:37:39 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/14 23:21:13 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <string.h>
 #include <sstream>
 
 #define BLUE_GREEN	"\033[32;44m"

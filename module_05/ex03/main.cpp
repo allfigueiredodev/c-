@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/14 23:27:13 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/06/14 23:27:15 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.h"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
 #include "Classes/AForm/AForm.hpp"
@@ -14,7 +26,7 @@ void	SubjectTest(void) {
 	delete rrf;
 };
 
-void	InternMakePresidentialPardonFormTest(){
+void	InternMakePresidentialPardonFormTest(void){
 	Intern someRandomIntern;
 	AForm* ppf;
 	ppf = someRandomIntern.makeForm("presidential pardon", "Allesson");
@@ -22,7 +34,7 @@ void	InternMakePresidentialPardonFormTest(){
 	delete ppf;
 };
 
-void	InternMakeShrubberyCreationFormTest(){
+void	InternMakeShrubberyCreationFormTest(void){
 	Intern someRandomIntern;
 	AForm* scf;
 	scf = someRandomIntern.makeForm("shrubbery creation", "Home");
@@ -30,7 +42,7 @@ void	InternMakeShrubberyCreationFormTest(){
 	delete scf;
 };
 
-void	BureaucratSignInternFormsTest(){
+void	BureaucratSignInternFormsTest(void){
 	Intern someRandomIntern;
 	Bureaucrat theBureacucrat("The Bureaucrat", 1);
 	AForm* rrf;
@@ -50,6 +62,14 @@ void	BureaucratSignInternFormsTest(){
 	delete scf;
 };
 
+void	formNotRecognizedTest(void){
+	Intern someRandomIntern;
+	Bureaucrat theBureacucrat("The Bureaucrat", 1);
+	AForm* nrf;
+	nrf = someRandomIntern.makeForm("weird form", "Bender");
+	delete nrf;
+};
+
 int main(void) {
 	std::cout << CYAN << "***SUBJECT TEST***" << DFT << std::endl;	
 	SubjectTest();
@@ -62,5 +82,8 @@ int main(void) {
 	std::cout << std::endl;
 	std::cout << CYAN << "***BUREAUCRAT SIGN INTERN FORMS TEST***" << DFT << std::endl;	
 	BureaucratSignInternFormsTest();
+	std::cout << std::endl;
+	std::cout << CYAN << "***NOT RECOGNIZED FORM TEST***" << DFT << std::endl;	
+	formNotRecognizedTest();
 	std::cout << std::endl;
 }

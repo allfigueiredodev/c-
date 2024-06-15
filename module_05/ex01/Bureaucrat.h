@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 18:44:14 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/01 18:58:17 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/14 23:44:14 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 #include <string>
 #include <iostream>
-// #include "Classes/Form/Form.hpp"
-// #include "Classes/Bureaucrat/Bureaucrat.hpp"
+#include <sstream>
 
 #define BLUE_GREEN	"\033[32;44m"
 #define MAG_YE		"\033[33;45m"

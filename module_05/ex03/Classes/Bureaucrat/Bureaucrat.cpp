@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/14 23:25:44 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/06/14 23:25:52 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.h"
 #include "Classes/AForm/AForm.hpp"
@@ -11,20 +22,12 @@ Bureaucrat::Bureaucrat(void) : _name("Allesson Figueiredo"), _grade(1) {
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
     std::cout << "Bureaucrat class parametarized constructor called." << std::endl;    
-    try {
-        if (grade > 150)
-            throw Bureaucrat::GradeTooLowException();
-        else if (grade < 1)
-            throw Bureaucrat::GradeTooHighException();
-        else
-            _grade = grade;
-    }
-    catch (const Bureaucrat::GradeTooLowException& e) {
-        std::cout << RED << e.what() << DFT << std::endl;
-    }
-    catch (const Bureaucrat::GradeTooHighException& e) {
-        std::cout << RED << e.what() << DFT << std::endl;
-    }
+	if (grade > 150)
+		throw Bureaucrat::AtConstructionGradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::AtConstructionGradeTooHighException();
+	else
+		_grade = grade;
     std::cout << "Bureaucrat " << BLUE << name << DFT
     << ", has grade " << BLUE << grade << DFT << "." << std::endl;  
 };
@@ -34,10 +37,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& Bureaucrat) {
     *this = Bureaucrat;
 };
 
-Bureaucrat::~Bureaucrat(void){
-    std::cout << "Bureaucrat class destructor called." << std::endl;
-};
-
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs){
     std::cout << "Bureaucrat class copy assign operator called." << std::endl;
     if (this != &rhs){
@@ -45,6 +44,10 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs){
         this->_grade = rhs._grade;
     }
     return *this;
+};
+
+Bureaucrat::~Bureaucrat(void){
+    std::cout << "Bureaucrat class destructor called." << std::endl;
 };
 
 // METHODS
@@ -82,9 +85,13 @@ void        Bureaucrat::decrementGrade(void) {
 
 void        Bureaucrat::signForm(AForm& AForm) {
     try {
-        if (AForm.getSigned())
+        if (!AForm.getSigned() && this->getGrade() < AForm.getGradeToSign()){
+			AForm.beSigned(*this);
             std::cout << BLUE << this->getName() << DFT << " signed " << GREEN << AForm.getName() << DFT << std::endl;
-        else
+		}
+        else if (AForm.getSigned())
+			std::cout << YELLOW << "Form " << AForm.getName() << " is signed already." << DFT << std::endl;
+		else
             throw AForm::GradeTooLowException(AForm);
     }
     catch (const AForm::GradeTooLowException& e) {
@@ -138,4 +145,12 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() {
 
 const char* Bureaucrat::FormExecutionFailedException::what() const throw () {
     return ("Execution failed.");
+};
+
+const char* Bureaucrat::AtConstructionGradeTooLowException::what() const throw() {
+    return ("The value is over the limits, the lowest grade possible is 150.");
+};
+
+const char* Bureaucrat::AtConstructionGradeTooHighException::what() const throw() {
+    return ("The value is over the limits, the highest grade possible is 1.");
 };

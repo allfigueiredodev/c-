@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/14 23:25:37 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/06/14 23:25:40 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AFORM_HPP
 #define AFORM_HPP
 
@@ -20,10 +32,20 @@ class AForm {
         };
 		class GradeTooLowException : public std::exception {
             public:
-                explicit GradeTooLowException(const AForm& AForm) : _grade(AForm._gradeToSign) {};
+                explicit GradeTooLowException(const AForm& AForm);
                 virtual const char* what() const throw();
             private:
                 int         _grade;
+        };
+		class AtConstructionGradeTooLowException : public std::exception {
+            
+            public:
+                virtual const char* what() const throw() ;
+        };
+        class AtConstructionGradeTooHighException : public std::exception {
+            
+            public:
+                virtual const char* what() const throw();
         };
         std::string     getName(void) const;
         bool            getSigned(void) const;

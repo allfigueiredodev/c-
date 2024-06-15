@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/14 23:17:46 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/06/14 23:17:49 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.h"
 
@@ -7,20 +18,12 @@ Bureaucrat::Bureaucrat(void) : _name("Allesson Figueiredo"), _grade(1) {
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
     std::cout << "Bureaucrat class named constructor called." << std::endl;    
-    try {
-        if (grade > 150)
-            throw Bureaucrat::AtConstructionGradeTooLowException();
-        else if (grade < 1)
-            throw Bureaucrat::AtConstructionGradeTooHighException();
-        else
-            _grade = grade;
-    }
-    catch (const Bureaucrat::AtConstructionGradeTooLowException& e) {
-        std::cout << RED << e.what() << DFT << std::endl;
-    }
-    catch (const Bureaucrat::AtConstructionGradeTooHighException& e) {
-        std::cout << RED << e.what() << DFT << std::endl;
-    }
+	if (grade > 150)
+		throw Bureaucrat::AtConstructionGradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::AtConstructionGradeTooHighException();
+	else
+		_grade = grade;
 };
 
 Bureaucrat::Bureaucrat(const Bureaucrat& Bureaucrat){

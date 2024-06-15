@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/14 23:19:32 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/06/14 23:20:05 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.h"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
 #include "Classes/Form/Form.hpp"
@@ -23,7 +35,7 @@ void bureaucratUnderGradeTest(){
 };
 
 void instantiateBureaucratOverGradeLimitsTest(void){
-	// Bureaucrat zidane("Zidane", 188); // try to instantiate the class without the try block will reproduce an abort trap
+	// Bureaucrat zidane("Zidane", 188); // instantiate the class without the try block will reproduce an abort trap
 	try {
 		Bureaucrat zidane("Zidane", 188);
 	}
@@ -36,7 +48,7 @@ void instantiateBureaucratOverGradeLimitsTest(void){
 }
 
 void instantiateFormOverGradeLimitsTest(void){
-	// Form ffix("FFIX", 188, 200); // try to instantiate the class without the try block will reproduce an abort trap
+	// Form ffix("FFIX", 188, 200); // instantiate the class without the try block will reproduce an abort trap
 	try {
 		Form ffix("FFIX", 188, 200);
 	}

@@ -1,12 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/14 23:18:57 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/06/14 23:19:03 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.h"
 #include "Classes/Form/Form.hpp"
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
-#include <cstdlib>
-#include <cstring>
-#include <string.h>
-#include <stdlib.h>
-#include <iostream>
-#include <sstream>
 
 Form::Form(void) : _name("Empty Form"), _signed(false), _gradeToSign(20), _gradeToExecute(5) {
     std::cout << "Form class default constructor called." << std::endl;

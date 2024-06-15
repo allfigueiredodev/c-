@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/14 23:19:09 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/06/14 23:19:13 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FORM_HPP
 #define FORM_HPP
@@ -37,7 +48,6 @@ class Form {
             public:
                 virtual const char* what() const throw();
         };
-
         std::string getName(void) const;
         bool        getSigned(void) const;
         int         getGradeToSign(void) const;
