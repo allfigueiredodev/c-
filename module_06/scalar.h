@@ -27,6 +27,6 @@ typedef enum TYPES {
     FLOAT,
     DOUBLE,
 	TOTAL_TYPES,
-};
+} TYPES;
 
 #endif

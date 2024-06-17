@@ -6,23 +6,32 @@
 
 class ScalarConverter {
 
-    public:
+    private:
+
         ScalarConverter(void);
         ScalarConverter(const ScalarConverter& ScalarConverter);
         ScalarConverter& operator=(const ScalarConverter& rhs);
         ~ScalarConverter(void);
+    
 
-    typedef struct s_matchFunctions {
-        // int (*fptr)(std::string value);
-        // void (*fptr)(void);
-    } t_matchFunctions;
+        static int isChar(const char* literal);
+        static int isInt(const char* literal);
+        static int isFloat(const char* literal);
+        static int isDouble(const char* literal);
+        static void printIfChar(const char* literal);
+        static void printIfInt(const char* literal);
+        static void printIfFloat(const char* literal);
+        static void printIfDouble(const char* literal);
+        typedef struct s_matchFunctions {
+            int (*fptrCheck)(const char* literal);
+            void (*fptrPrint)(const char* literal);
+        } t_matchFunctions;
+        static t_matchFunctions _matchFunctions[4];
+    
+    public:
 
-    static t_matchFunctions matchFunctions[4];
-    static void convert(std::string value);
-    static bool ScalarConverter::isChar(std::string value);
-    static bool isInt(std::string value);
-    static bool isFloat(std::string value);
-    static bool isDouble(std::string value);
+        static void convert(const char* literal);
+
 };
 
 #endif

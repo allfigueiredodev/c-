@@ -1,5 +1,21 @@
 #include "scalar.h"
 #include "ScalarConverter.hpp"
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <ostream>
+#include <sstream>
+#include "Classes/ScalarConverter/ScalarConverter.hpp"
+
+// Define _matchFunctions here
+    ScalarConverter::t_matchFunctions ScalarConverter::_matchFunctions[4] = {
+    { &ScalarConverter::isChar, &ScalarConverter::printIfChar },
+    { &ScalarConverter::isInt, &ScalarConverter::printIfInt },
+    { &ScalarConverter::isFloat, &ScalarConverter::printIfFloat },
+    { &ScalarConverter::isDouble, &ScalarConverter::printIfDouble }
+};
+
+// ***CANONICAL CONSTRUCTORS***
 
 ScalarConverter::ScalarConverter(void) {
     std::cout << "ScalarConverter class default constructor called." << std::endl;
@@ -13,7 +29,7 @@ ScalarConverter::ScalarConverter(const ScalarConverter& ScalarConverter) {
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {
     std::cout << "ScalarConverter class copy assign operator called." << std::endl;
     if (this != &rhs){
-        //...
+       *this = rhs;
     }
     return *this;
 };
@@ -22,31 +38,119 @@ ScalarConverter::~ScalarConverter(void) {
     std::cout << "ScalarConverter class destructor called." << std::endl;
 };
 
-void ScalarConverter::convert(std::string value) {
+// ***METHODS**
+
+void ScalarConverter::convert(const char* literal) {
     int i = -1;
+    int j = 0;
 
-    while (i != -1 && i < TOTAL_TYPES) {
-        i = 
+    while (i != -1 && j < TOTAL_TYPES) {
+        i = (_matchFunctions[j].fptrCheck)(literal);
+        if (i != -1)
+            (_matchFunctions[j].fptrPrint)(literal);
+        j++;
     }
-
-    // • isChar
-    // • isInt
-    // • isFloat
-    // • isDouble
 };
 
-int ScalarConverter::isChar(std::string value){
-
+int ScalarConverter::isChar(const char* literal) {
+    if (strlen(literal) == 1 && isprint(*literal)){
+        println(MAGENTA << "It`s a char.");
+        return (0);
+    }
+    else
+        return (-1);    
 };
 
-int ScalarConverter::isInt(std::string value){
-
+int ScalarConverter::isInt(const char* literal) {
+    std::string literalAsString = static_cast<std::string>(literal);
+    for (size_t i = (literal[0] == '-' || literal[0] == '+') ? i = 1 : i = 0;
+        i < literalAsString.length(); i++) {
+            if (!isdigit(literal[0])) // check for non digits
+                return (-1);
+        }
+    int atoiedLiteral = atoi(literal);
+    std::stringstream stream; 
+    stream << atoiedLiteral;
+    std::string atoiedLiteralAsString;
+    stream >> atoiedLiteralAsString;
+    if (literalAsString.compare(atoiedLiteralAsString)){ //check for potential overflow
+        println(MAGENTA << "It`s a int.");
+        return (1);
+    }
+    return (-1);
 };
 
-int ScalarConverter::isFloat(std::string value){
-
+int ScalarConverter::isFloat(const char* literal) {
+    int count = 0;
+    std::string literalAsString = static_cast<std::string>(literal);
+    for (size_t i = (literal[0] == '-' || literal[0] == '+') ? i = 1 : i = 0;
+    i < literalAsString.length(); i++) {
+        if (!isdigit(literal[i]) && literal[i] != '.') // check for non digits
+            return (-1);
+        if (literal[i] == '.')
+            count ++;
+    }
+    if (count > 1){
+		std::cout << "Broken float: " << count << std::endl;
+        return (-1);
+	}
+    if (literalAsString.back() == 'f' || literalAsString.back() == 'F'){
+        literalAsString.erase(literalAsString.length() - 1);
+        println(MAGENTA << "It`s a float.");
+        return (2);
+    }
+    return (-1);
 };
 
-int ScalarConverter::isDouble(std::string value){
+int ScalarConverter::isDouble(const char* literal) {
+    int count = 0;
+    std::string literalAsString = static_cast<std::string>(literal);
+    for (size_t i = (literal[0] == '-' || literal[0] == '+') ? i = 1 : i = 0;
+    i < literalAsString.length(); i++) {
+        if (!isdigit(literal[i]) && literal[i] != '.') // check for non digits
+            return (-1);
+        if (literal[i] == '.')
+            count ++;
+    }
+    for (size_t i = 0; i < literalAsString.length(); i++) {
+        if (literal[i] == '.')
+            count ++;
+    }
+    if (count == 1){
+        println(MAGENTA << "It`s a double.");
+        return (3);    
+    }
+    return (-1);
+};
 
+void ScalarConverter::printIfChar(const char* literal) {
+    char converted = literal[0];
+    println(GREEN << "char: " << BLUE << converted);  
+    println(GREEN << "int: " << BLUE << static_cast<int>(converted));  
+    println(GREEN << "float: " << BLUE << static_cast<float>(converted));  
+    println(GREEN << "double: " << BLUE << static_cast<double>(converted));  
+};
+
+void ScalarConverter::printIfInt(const char* literal) {
+    int converted = atoi(literal);
+    println(GREEN << "char: " << BLUE << static_cast<char>(converted));  
+    println(GREEN << "int: " << BLUE << converted);  
+    println(GREEN << "float: " << BLUE << static_cast<float>(converted));  
+    println(GREEN << "double: " << BLUE << static_cast<double>(converted));  
+};
+
+void ScalarConverter::printIfFloat(const char* literal) {
+    float converted = atof(literal);
+    println(GREEN << "char: " << BLUE << static_cast<char>(converted));  
+    println(GREEN << "int: " << BLUE << static_cast<int>(converted));  
+    println(GREEN << "float: " << BLUE << converted);  
+    println(GREEN << "double: " << BLUE << static_cast<double>(converted));  
+};
+
+void ScalarConverter::printIfDouble(const char* literal) {
+    double converted = atol(literal);
+    println(GREEN << "char: " << BLUE << static_cast<char>(converted));  
+    println(GREEN << "int: " << BLUE << static_cast<int>(converted));  
+    println(GREEN << "float: " << BLUE << static_cast<float>(converted));  
+    println(GREEN << "double: " << BLUE << converted);  
 };
