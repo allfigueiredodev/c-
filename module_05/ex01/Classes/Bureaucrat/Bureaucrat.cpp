@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 23:18:25 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/14 23:21:37 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:27:21 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Classes/Bureaucrat/Bureaucrat.hpp"
 #include "Classes/Form/Form.hpp"
 
-Bureaucrat::Bureaucrat(void) : _name("Allesson Figueiredo"), _grade(1) {
+Bureaucrat::Bureaucrat(void) : _name("Allesson Figueiredo"), _grade(150) {
     std::cout << "Bureaucrat class default constructor called." << std::endl;
 };
 

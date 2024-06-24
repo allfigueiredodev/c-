@@ -6,13 +6,13 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 23:17:46 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/14 23:17:49 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:35:34 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.h"
 
-Bureaucrat::Bureaucrat(void) : _name("Allesson Figueiredo"), _grade(1) {
+Bureaucrat::Bureaucrat(void) : _name("Allesson Figueiredo"), _grade(150) {
     std::cout << "Bureaucrat class default constructor called." << std::endl;
 };
 
@@ -93,6 +93,6 @@ const char* Bureaucrat::AtConstructionGradeTooHighException::what() const throw(
 };
 
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& Bureaucrat) {
-    o << BLUE << Bureaucrat.getName() << DFT << ", bureaucrat grade " << GREEN << Bureaucrat.getGrade() << DFT << ".";
+    o << YELLOW << "The grade of Bureaucrat " << BLUE << Bureaucrat.getName() << DFT << " is " << GREEN << Bureaucrat.getGrade() << DFT << ".";
 	return (o);
 };

@@ -6,14 +6,14 @@
 #    By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/14 23:25:06 by aperis-p          #+#    #+#              #
-#    Updated: 2024/06/14 23:25:08 by aperis-p         ###   ########.fr        #
+#    Updated: 2024/06/24 16:31:39 by aperis-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = bureaucrat
 MAKE = make
 CC = c++
-FLAGS =  -Wall -Werror -Wextra -Wshadow -std=c++98 -g3
+FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
 SRC = main.cpp Classes/Bureaucrat/Bureaucrat.cpp Classes/AForm/AForm.cpp Classes/PresidentialPardonForm/PresidentialPardonForm.cpp \
 Classes/RobotomyRequestForm/RobotomyRequestForm.cpp Classes/ShrubberyCreationForm/ShrubberyCreationForm.cpp
 

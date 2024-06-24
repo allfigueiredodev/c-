@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 23:26:51 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/14 23:26:53 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:58:04 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :  AForm("Shrub
     _target = target;
 };
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& ShrubberyCreationForm) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& ShrubberyCreationForm) : AForm(ShrubberyCreationForm) {
     std::cout << "ShrubberyCreationForm class copy constructor called." << std::endl;
     *this = ShrubberyCreationForm;
 };

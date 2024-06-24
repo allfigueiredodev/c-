@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 23:19:32 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/14 23:20:05 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:49:38 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,18 @@ void instantiateFormOverGradeLimitsTest(void){
 }
 
 int main(void) {
+	std::cout << CYAN << "***BE SIGNED FORM TEST***" << DFT << std::endl;
 	beSignedFormTest();
+	std::cout << std::endl;
+	std::cout << CYAN << "***SIGN FORM TEST***" << DFT << std::endl;
 	signFormTest();
+	std::cout << std::endl;
+	std::cout << CYAN << "***BUREAUCRAT UNDER GRADE TEST***" << DFT << std::endl;
 	bureaucratUnderGradeTest();
+	std::cout << std::endl;
+	std::cout << CYAN << "***INSTANTIATE BUREAUCRAT OVER GRADE LIMITS TEST***" << DFT << std::endl;
 	instantiateBureaucratOverGradeLimitsTest();
+	std::cout << std::endl;
+	std::cout << CYAN << "***INSTANTIATE FORM OVER GRADE LIMITS TEST***" << DFT << std::endl;
 	instantiateFormOverGradeLimitsTest();
 }

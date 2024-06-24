@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 23:24:15 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/14 23:24:18 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:47:27 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("Robotomy R
     _target = target;
 };
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& RobotomyRequestForm) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& RobotomyRequestForm) : AForm(RobotomyRequestForm) {
     std::cout << "RobotomyRequestForm class copy constructor called." << std::endl;
     *this = RobotomyRequestForm;
 };

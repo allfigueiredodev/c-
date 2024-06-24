@@ -6,14 +6,14 @@
 #    By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/14 23:20:20 by aperis-p          #+#    #+#              #
-#    Updated: 2024/06/14 23:41:57 by aperis-p         ###   ########.fr        #
+#    Updated: 2024/06/24 16:31:32 by aperis-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = bureaucrat
 MAKE = make
 CC = c++
-FLAGS =  -Wall -Werror -Wextra -Wshadow -std=c++98 -g3
+FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
 SRC = main.cpp Classes/Bureaucrat/Bureaucrat.cpp Classes/Form/Form.cpp
 
 OBJS = $(SRC:.cpp=.o)

@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 23:24:57 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/14 23:25:00 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:53:54 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ShrubberyCreationFormRequiredGradesTest(void){
 	std::cout << std::endl;
 	ShrubberyCreationForm ShrubForm("Home");
 	std::cout << YELLOW << ShrubForm << DFT << std::endl;
-}
+};
 
 void	ShrubberyCreationFormExecuteTest(){
 	std::cout << std::endl;
@@ -96,7 +96,7 @@ void	RobotomyRequestFormRequiredGradesTest(void){
 	std::cout << std::endl;
 	RobotomyRequestForm RobotForm("Allesson");
 	std::cout << YELLOW << RobotForm << DFT << std::endl;
-}
+};
 
 void	RobotomyRequestFormExecuteTest(){
 	std::cout << std::endl;
@@ -167,4 +167,4 @@ int main(void) {
 	RobotomyRequestFormLowerSignGradeTest();
 	RobotomyRequestFormLowerExecGradeTest();
 	std::cout << std::endl;
-}
+};

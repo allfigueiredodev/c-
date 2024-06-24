@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 23:23:51 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/06/14 23:23:53 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/06/24 19:46:19 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Pres
     _target = target;
 };
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& PresidentialPardonForm) {
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& PresidentialPardonForm) : AForm(PresidentialPardonForm) {
     std::cout << "PresidentialPardonForm class copy constructor called." << std::endl;
     *this = PresidentialPardonForm;
 };
