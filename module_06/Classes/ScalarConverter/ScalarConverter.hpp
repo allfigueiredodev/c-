@@ -13,11 +13,11 @@ class ScalarConverter {
         ScalarConverter& operator=(const ScalarConverter& rhs);
         ~ScalarConverter(void);
     
-
-        static int isChar(const char* literal);
-        static int isInt(const char* literal);
-        static int isFloat(const char* literal);
-        static int isDouble(const char* literal);
+        static int  _precision;
+        static int  isChar(const char* literal);
+        static int  isInt(const char* literal);
+        static int  isFloat(const char* literal);
+        static int  isDouble(const char* literal);
         static void printIfChar(const char* literal);
         static void printIfInt(const char* literal);
         static void printIfFloat(const char* literal);
