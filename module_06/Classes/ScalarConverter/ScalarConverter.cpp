@@ -101,7 +101,8 @@ int ScalarConverter::isFloat(const char* literal) {
 	}
     (literalAsString.length() - literalAsString.rfind('.')) - 2 ? // calculate precision
     _precision = (literalAsString.length() - literalAsString.rfind('.')) - 2 : _precision = 1;
-    if ((literalAsString.back() == 'f' || literalAsString.back() == 'F') && count == 1) {
+    if ((literalAsString[literalAsString.length()] - 1 == 'f'
+	|| literalAsString[literalAsString.length()] - 1 == 'F') && count == 1) {
         println(MAGENTA << "It`s a float.");
         return (2);
     }
