@@ -1,7 +1,7 @@
 NAME = convert
 MAKE = make
 CC = c++
-FLAGS =  -Wall -Werror -Wextra -Wshadow -Wenum-conversion -std=c++98 -g3
+FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
 SRC = main.cpp Classes/ScalarConverter/ScalarConverter.cpp 
 
 OBJS = $(SRC:.cpp=.o)

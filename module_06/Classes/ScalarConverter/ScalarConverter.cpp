@@ -10,11 +10,13 @@
 int ScalarConverter::_precision = 0;
 
 // Define _matchFunctions here
-ScalarConverter::t_matchFunctions ScalarConverter::_matchFunctions[4] = {
+ScalarConverter::t_matchFunctions ScalarConverter::_matchFunctions[6] = {
     { &ScalarConverter::isChar, &ScalarConverter::printIfChar },
     { &ScalarConverter::isInt, &ScalarConverter::printIfInt },
     { &ScalarConverter::isFloat, &ScalarConverter::printIfFloat },
-    { &ScalarConverter::isDouble, &ScalarConverter::printIfDouble }
+    { &ScalarConverter::isDouble, &ScalarConverter::printIfDouble },
+    { &ScalarConverter::isInf, &ScalarConverter::printIfInf },
+    { &ScalarConverter::isNan, &ScalarConverter::printIfNan }
 };
 
 // ***CANONICAL CONSTRUCTORS***
@@ -45,6 +47,11 @@ ScalarConverter::~ScalarConverter(void) {
 void ScalarConverter::convert(const char* literal) {
     int i = -1;
     int j = 0;
+    if(atoi(literal) == -1)
+    {
+        throw ScalarConverter::IntOverflowTypeException();
+        return ;
+    }
     while (i == -1 && j < TOTAL_TYPES) {
         i = (_matchFunctions[j].fptrCheck)(literal);
         if (i != -1) {
@@ -129,38 +136,78 @@ int ScalarConverter::isDouble(const char* literal) {
     return (-1);
 };
 
+int ScalarConverter::isInf(const char* literal) {
+    if (isinf(atof(literal))){
+        println(ORANGE << "This is INF: " << static_cast<std::string>(literal));
+        return (4);
+    }
+    return (-1);
+};
+
+int ScalarConverter::isNan(const char* literal) {
+    if (isnan(atof(literal))){
+        println(ORANGE << "This is NAN: " << static_cast<std::string>(literal));
+        return (5);
+    }
+    return (-1);
+};
+
 void ScalarConverter::printIfChar(const char* literal) {
     char converted = literal[0];
-    println(GREEN << "char: " << BLUE << converted);  
+    println(GREEN << "char: " << BLUE << "'" << converted << "'");  
     println(GREEN << "int: " << BLUE << static_cast<int>(converted));  
-    println(GREEN << "float: " << BLUE << static_cast<float>(converted));  
+    println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');  
     println(GREEN << "double: " << BLUE << static_cast<double>(converted));  
 };
 
 void ScalarConverter::printIfInt(const char* literal) {
     int converted = atoi(literal);
-    println(GREEN << "char: " << BLUE << static_cast<char>(converted));  
+    println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'");  
     println(GREEN << "int: " << BLUE << converted);  
-    println(GREEN << "float: " << BLUE << static_cast<float>(converted));  
+    println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');
     println(GREEN << "double: " << BLUE << static_cast<double>(converted));  
 };
 
 void ScalarConverter::printIfFloat(const char* literal) {
     float converted = atof(literal);
-    println(GREEN << "char: " << BLUE << static_cast<char>(converted));  
+    println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'");  
     println(GREEN << "int: " << BLUE << static_cast<int>(converted)); 
     std::cout << std::fixed;
     std::cout.precision(_precision);
-    std::cout << GREEN << "float: " << BLUE << converted << 'f' << std::endl;  
+    println(GREEN << "float: " << BLUE << converted << 'f');
     println(GREEN << "double: " << BLUE << static_cast<double>(converted));  
 };
 
 void ScalarConverter::printIfDouble(const char* literal) {
-    double converted = atol(literal);
-    println(GREEN << "char: " << BLUE << static_cast<char>(converted));  
+    double converted = atof(literal);
+    println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'");  
     println(GREEN << "int: " << BLUE << static_cast<int>(converted));
     std::cout << std::fixed;
     std::cout.precision(_precision);
-    println(GREEN << "float: " << BLUE << static_cast<float>(converted));  
+    println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');
     println(GREEN << "double: " << BLUE << converted);  
+};
+
+void ScalarConverter::printIfInf(const char* literal) {
+    double converted = atof(literal);
+    println(GREEN << "char: " << "impossible");  
+    println(GREEN << "int: " << "impossible");
+    std::cout << std::fixed;
+    std::cout.precision(_precision);
+    println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');
+    println(GREEN << "double: " << BLUE << converted);  
+};
+
+void ScalarConverter::printIfNan(const char* literal) {
+    double converted = atof(literal);
+    println(GREEN << "char: " << "impossible");  
+    println(GREEN << "int: " << "impossible");
+    std::cout << std::fixed;
+    std::cout.precision(_precision);
+    println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');
+    println(GREEN << "double: " << BLUE << converted);  
+};
+
+const char* ScalarConverter::IntOverflowTypeException::what() const throw() {
+    return ("Input is over int type limits.");
 };

@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include <limits.h>
+#include <float.h>
+#include <limits>
+#include <cmath>
 
 #define println(x) std::cout << x << DFT << std::endl;
 #define errorln(x) std::cerr << RED << x << DFT << std::endl;
@@ -26,6 +29,8 @@ typedef enum TYPES {
     INT,
     FLOAT,
     DOUBLE,
+    INF,
+    NOTAN,
 	TOTAL_TYPES,
 } TYPES;
 
