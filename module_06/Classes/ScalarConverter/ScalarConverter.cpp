@@ -47,13 +47,13 @@ ScalarConverter::~ScalarConverter(void) {
 void ScalarConverter::convert(const char* literal) {
     int i = -1;
     int j = 0;
-    if(atoi(literal) == -1)
-    {
-        throw ScalarConverter::IntOverflowTypeException();
-        return ;
-    }
     while (i == -1 && j < TOTAL_TYPES) {
-        i = (_matchFunctions[j].fptrCheck)(literal);
+		try {
+        	i = (_matchFunctions[j].fptrCheck)(literal);
+		}
+		catch (std::exception& e) {
+			errorln(e.what());
+		}
         if (i != -1) {
             (_matchFunctions[j].fptrPrint)(literal);
         }
@@ -78,17 +78,18 @@ int ScalarConverter::isInt(const char* literal) {
             if (!isdigit(literal[i])) // check for non digits
                 return (-1);
         }
-    int atoiedLiteral = atoi(literal);
-    println(GREEN << "After atoi: " << atoiedLiteral);
-    std::stringstream stream; 
-    stream << atoiedLiteral;
-    std::string atoiedLiteralAsString;
-    stream >> atoiedLiteralAsString;
-    if (literalAsString == atoiedLiteralAsString){ //check for potential overflow
-        println(MAGENTA << "It`s a int.");
+    // int atoiedLiteral = atoi(literal);
+    // println(GREEN << "After atoi: " << atoiedLiteral);
+    // std::stringstream stream;
+    // stream << atoiedLiteral;
+    // std::string atoiedLiteralAsString;
+    // stream >> atoiedLiteralAsString;
+    // if (literalAsString == atoiedLiteralAsString){ //check for potential overflow
+        println(MAGENTA << "It's a int.");
         return (1);
-    }
-    return (-1);
+    // }
+	// throw ScalarConverter::IntOverflowTypeException();
+    // return (-1);
 };
 
 int ScalarConverter::isFloat(const char* literal) {
@@ -97,7 +98,7 @@ int ScalarConverter::isFloat(const char* literal) {
     println(RED << "After float cast: " << literalAsString);
     for (size_t i = (literal[0] == '-' || literal[0] == '+') ? i = 1 : i = 0;
     i < literalAsString.length(); i++) {
-        if (!isdigit(literal[i]) && literal[i] != '.' && literal[i] != 'f') // check for non digits
+        if (!isdigit(literal[i]) && literal[i] != '.' && literal[i] != 'f' && literal[i] != 'F') // check for non digits
             return (-1);
         if (literal[i] == '.')
             count ++;
@@ -108,8 +109,8 @@ int ScalarConverter::isFloat(const char* literal) {
 	}
     (literalAsString.length() - literalAsString.rfind('.')) - 2 ? // calculate precision
     _precision = (literalAsString.length() - literalAsString.rfind('.')) - 2 : _precision = 1;
-    if ((literalAsString[literalAsString.length()] - 1 == 'f'
-	|| literalAsString[literalAsString.length()] - 1 == 'F') && count == 1) {
+    if ((literalAsString[literalAsString.length() -1] == 'f'
+	|| literalAsString[literalAsString.length() -1] == 'F') && count == 1) {
         println(MAGENTA << "It`s a float.");
         return (2);
     }
@@ -137,7 +138,7 @@ int ScalarConverter::isDouble(const char* literal) {
 };
 
 int ScalarConverter::isInf(const char* literal) {
-    if (isinf(atof(literal))){
+    if (std::isinf(atof(literal))){
         println(ORANGE << "This is INF: " << static_cast<std::string>(literal));
         return (4);
     }
@@ -145,7 +146,7 @@ int ScalarConverter::isInf(const char* literal) {
 };
 
 int ScalarConverter::isNan(const char* literal) {
-    if (isnan(atof(literal))){
+    if (std::isnan(atof(literal))){
         println(ORANGE << "This is NAN: " << static_cast<std::string>(literal));
         return (5);
     }
@@ -154,23 +155,49 @@ int ScalarConverter::isNan(const char* literal) {
 
 void ScalarConverter::printIfChar(const char* literal) {
     char converted = literal[0];
-    println(GREEN << "char: " << BLUE << "'" << converted << "'");  
+    println(GREEN << "char: " << BLUE << "'" << converted << "'");   // NON DISPLAYABLE
     println(GREEN << "int: " << BLUE << static_cast<int>(converted));  
     println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');  
     println(GREEN << "double: " << BLUE << static_cast<double>(converted));  
 };
 
 void ScalarConverter::printIfInt(const char* literal) {
-    int converted = atoi(literal);
-    println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'");  
-    println(GREEN << "int: " << BLUE << converted);  
-    println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');
-    println(GREEN << "double: " << BLUE << static_cast<double>(converted));  
+    std::string literalAsString = static_cast<std::string>(literal);
+	int converted = atoi(literal);
+	int atoiedLiteral = atoi(literal);
+    std::stringstream stream;
+    stream << atoiedLiteral;
+    std::string atoiedLiteralAsString;
+    stream >> atoiedLiteralAsString;
+	println(ORANGE << "GOT HERE");
+	if (isprint(converted)) {
+    	println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'"); // NON DISPLAYABLE
+	}
+	else if (converted <= 32) {
+    	println(GREEN << "char: " << BLUE << "Non Displayable"); // NON DISPLAYABLE
+	}
+	else
+    	println(GREEN << "char: " << BLUE << "impossible"); // NON DISPLAYABLE
+	if (literalAsString == atoiedLiteralAsString) {
+		println(GREEN << "int: " << BLUE << converted);  
+		println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');
+		println(GREEN << "double: " << BLUE << static_cast<double>(converted));
+	}
+	else
+		printIfDouble(literal);
+	println(ORANGE << "GOT HEREEEE");
 };
 
 void ScalarConverter::printIfFloat(const char* literal) {
     float converted = atof(literal);
-    println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'");  
+	if (isprint(converted)) {
+    	println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'"); // NON DISPLAYABLE
+	}
+	else if (converted <= 32) {
+    	println(GREEN << "char: " << BLUE << "Non Displayable"); // NON DISPLAYABLE
+	}
+	else
+    	println(GREEN << "char: " << BLUE << "impossible"); // NON DISPLAYABLE
     println(GREEN << "int: " << BLUE << static_cast<int>(converted)); 
     std::cout << std::fixed;
     std::cout.precision(_precision);
@@ -179,8 +206,16 @@ void ScalarConverter::printIfFloat(const char* literal) {
 };
 
 void ScalarConverter::printIfDouble(const char* literal) {
+	println(ORANGE << "GOT INSIDE DOUBLE");
     double converted = atof(literal);
-    println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'");  
+	if (isprint(converted)) {
+    	println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'"); // NON DISPLAYABLE
+	}
+	else if (converted <= 32) {
+    	println(GREEN << "char: " << BLUE << "Non Displayable"); // NON DISPLAYABLE
+	}
+	else
+    	println(GREEN << "char: " << BLUE << "impossible"); // NON DISPLAYABLE
     println(GREEN << "int: " << BLUE << static_cast<int>(converted));
     std::cout << std::fixed;
     std::cout.precision(_precision);

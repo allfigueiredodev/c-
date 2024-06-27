@@ -26,11 +26,14 @@ class ScalarConverter {
         static void printIfDouble(const char* literal);
         static void printIfInf(const char* literal);
         static void printIfNan(const char* literal);
+
         typedef struct s_matchFunctions {
             int (*fptrCheck)(const char* literal);
             void (*fptrPrint)(const char* literal);
         } t_matchFunctions;
+
         static t_matchFunctions _matchFunctions[6];
+
         class IntOverflowTypeException: public std::exception {
 			public:
 				virtual const char* what() const throw();
