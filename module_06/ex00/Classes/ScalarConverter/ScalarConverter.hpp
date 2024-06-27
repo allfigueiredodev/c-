@@ -38,6 +38,11 @@ class ScalarConverter {
 			public:
 				virtual const char* what() const throw();
 		};
+
+        class BrokenFloatException: public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
     
     public:
 
