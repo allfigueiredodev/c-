@@ -20,8 +20,8 @@ int main (int argc, char **argv){
 	println(BLUE << "Double max: " << DBL_MAX << DFT);
 	println(BLUE << "Long min: " << LONG_MIN << DFT);
 	println(BLUE << "Long max: " << LONG_MAX << DFT);
-	println(BLUE << "Long long min: " << LONG_LONG_MIN << DFT);
-	println(BLUE << "Long long max: " << LONG_LONG_MAX << DFT);
+	// println(BLUE << "Long long min: " << LONG_LONG_MIN << DFT);
+	// println(BLUE << "Long long max: " << LONG_LONG_MAX << DFT);
 	// int i = 0;
 	// i = atoi("76576575765757656757657576");
 	// println(ORANGE << "Atoi return: " << i);

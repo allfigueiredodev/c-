@@ -53,6 +53,7 @@ void ScalarConverter::convert(const char* literal) {
 		}
 		catch (std::exception& e) {
 			errorln(e.what());
+            return ;
 		}
         if (i != -1) {
             (_matchFunctions[j].fptrPrint)(literal);
@@ -62,7 +63,7 @@ void ScalarConverter::convert(const char* literal) {
 };
 
 int ScalarConverter::isChar(const char* literal) {
-    if (strlen(literal) == 1 && isprint(*literal) && !isdigit(*literal)){
+    if (strlen(literal) == 1 && isprint(*literal) && !isdigit(*literal)) {
         println(MAGENTA << "It`s a char.");
         return (0);
     }
@@ -78,18 +79,18 @@ int ScalarConverter::isInt(const char* literal) {
             if (!isdigit(literal[i])) // check for non digits
                 return (-1);
         }
-    // int atoiedLiteral = atoi(literal);
-    // println(GREEN << "After atoi: " << atoiedLiteral);
-    // std::stringstream stream;
-    // stream << atoiedLiteral;
-    // std::string atoiedLiteralAsString;
-    // stream >> atoiedLiteralAsString;
-    // if (literalAsString == atoiedLiteralAsString){ //check for potential overflow
+    int atoiedLiteral = atoi(literal);
+    println(GREEN << "After atoi: " << atoiedLiteral);
+    std::stringstream stream;
+    stream << atoiedLiteral;
+    std::string atoiedLiteralAsString;
+    stream >> atoiedLiteralAsString;
+    if (literalAsString == atoiedLiteralAsString){ //check for potential overflow
         println(MAGENTA << "It's a int.");
         return (1);
-    // }
-	// throw ScalarConverter::IntOverflowTypeException();
-    // return (-1);
+    }
+	throw ScalarConverter::IntOverflowTypeException();
+    return (-1);
 };
 
 int ScalarConverter::isFloat(const char* literal) {
@@ -164,12 +165,6 @@ void ScalarConverter::printIfChar(const char* literal) {
 void ScalarConverter::printIfInt(const char* literal) {
     std::string literalAsString = static_cast<std::string>(literal);
 	int converted = atoi(literal);
-	int atoiedLiteral = atoi(literal);
-    std::stringstream stream;
-    stream << atoiedLiteral;
-    std::string atoiedLiteralAsString;
-    stream >> atoiedLiteralAsString;
-	println(ORANGE << "GOT HERE");
 	if (isprint(converted)) {
     	println(GREEN << "char: " << BLUE << "'" << static_cast<char>(converted) << "'"); // NON DISPLAYABLE
 	}
@@ -178,14 +173,9 @@ void ScalarConverter::printIfInt(const char* literal) {
 	}
 	else
     	println(GREEN << "char: " << BLUE << "impossible"); // NON DISPLAYABLE
-	if (literalAsString == atoiedLiteralAsString) {
-		println(GREEN << "int: " << BLUE << converted);  
-		println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');
-		println(GREEN << "double: " << BLUE << static_cast<double>(converted));
-	}
-	else
-		printIfDouble(literal);
-	println(ORANGE << "GOT HEREEEE");
+    println(GREEN << "int: " << BLUE << converted);  
+    println(GREEN << "float: " << BLUE << static_cast<float>(converted) << 'f');
+    println(GREEN << "double: " << BLUE << static_cast<double>(converted));
 };
 
 void ScalarConverter::printIfFloat(const char* literal) {
