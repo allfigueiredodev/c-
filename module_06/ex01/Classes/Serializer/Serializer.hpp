@@ -1,6 +1,9 @@
 
-#ifndef SERIALIZER_H
-#define SERIALIZER_H
+#ifndef SERIALIZER_HPP
+#define SERIALIZER_HPP
+
+#include "Serializer.h"
+#include "Data.h"
 
 class Serializer {
 
@@ -9,7 +12,9 @@ class Serializer {
         Serializer(const Serializer& Serializer);
         Serializer& operator=(const Serializer& rhs);
         ~Serializer(void);
-		static uintptr_t serialize(Data* ptr);
+    
+    public:
+    	static uintptr_t serialize(Data* ptr);
 		static Data* deserialize(uintptr_t raw);
 
 };
