@@ -3,66 +3,69 @@
 
 void	DefaultConstructorTest(void) {
 	Array<int> intArr;
-	// println(MAGENTA << "My adress: " << intArr);
-	println(BLUE << intArr.size());
 	intArr.addBack(42);
-	// intArr[0] = 42;
-	std::cout << GREEN << intArr.getIndex(0) << DFT << std::endl;
-	println(BLUE << intArr.size());
-	intArr.addBack(433);
-	std::cout << GREEN << intArr.getIndex(1) << DFT << std::endl;
-	println(BLUE << intArr.size());
-	// Array<float> floatArr;
-	// // println(MAGENTA << "My adress: " << floatArr);
-	// floatArr[0] = 42.42f;
-	// std::cout << GREEN << floatArr.getIndex(0) << DFT << std::endl;
-	// Array<double> doubleArr;
-	// // println(MAGENTA << "My adress: " << doubleArr);
-	// doubleArr[0] = 24.24;
-	// std::cout << GREEN << doubleArr.getIndex(0) << DFT << std::endl;
-	// Array<std::string> stringArr;
-	// // println(MAGENTA << "My adress: " << stringArr);
-	// stringArr[0] = "forty two"; 
-	// std::cout << GREEN << stringArr.getIndex(0) << DFT << std::endl;
+	println(GREEN << "Passing <int>: " << BLUE << intArr.getIndex(0));
+	Array<float> floatArr;
+	floatArr.addBack(42.42f);
+	println(GREEN << "Passing <float>: " << BLUE << floatArr.getIndex(0));
+	Array<double> doubleArr;
+	doubleArr.addBack(42.42f);
+	println(GREEN << "Passing <double>: " << BLUE << doubleArr.getIndex(0));
+	Array<std::string> stringArr;
+	stringArr.addBack("Fourty Two");
+	println(GREEN << "Passing <string>: " << BLUE << stringArr.getIndex(0));
 };
 
-// void	ParameterizedConstructorTest(void) {
+void	ParameterizedConstructorTest(void) {
+	Array<int> intArr(3);
+	intArr[0] = 1;
+	intArr[1] = 2;
+	intArr[2] = 3;
+	println(GREEN << "int array: " << BLUE << intArr[0] << ", " << intArr[1] << ", " << intArr[2]);
+	Array<std::string> stringArr(3);
+	stringArr[0] = "qwerty";
+	stringArr[1] = "asdfgh";
+	stringArr[2] = "zxcvbn";
+	println(GREEN << "int array: " << BLUE << stringArr[0] << ", " << stringArr[1] << ", " << stringArr[2]);
+};
 
-// };
+void	DeepCopyConstructorAndAssignmentTest(void) {
+	Array<int>	intArr;
+	Array<int>	intArrCpy;
+	intArrCpy = intArr;
+	println(GREEN << "intArr adress: " << BLUE << &intArr.getIndex(0));
+	println(GREEN << "intArrCpy adress: " << BLUE << &intArrCpy.getIndex(0));
+};
 
-// void	DeepCopyConstructorAndAssignmentTest(void) {
+void	ArrayBoundariesExceptionTest(void) {
+	Array<int> intArr(3);
+	try {
+		intArr[5] = 10;
+	}
+	catch (const std::out_of_range& e) {
+		errorln(e.what());
+	}
+};
 
-// };
-
-// void	SubscriptionOperatorTest(void) {
-
-// };
-
-// void	ArrayBoundariesExceptionTest(void) {
-
-// };
-
-// void	SizeMethodTest(void) {
-
-// };
+void	SizeMethodTest(void) {
+	Array<int> intArr(200);
+	println(GREEN << "intArr size: " << BLUE << intArr.size());
+};
 
 int main(void)
 {
 	printlnnl(CYAN << "***DEFAULT CONSTRUCTOR TEST***");
 	DefaultConstructorTest();
 	println("\n");
-	// printlnnl(CYAN << ***PARAMETERIZED CONSTRUCTOR TEST***);
-	// ParameterizedConstructorTest();
-	// println("\n");
-	// printlnnl(CYAN << ***DEEP COPY CONSTRUCTOR AND ASSIGMENT TEST***);
-	// DeepCopyConstructorAndAssignmentTest();
-	// println("\n");
-	// printlnnl(CYAN << ***SUBSCRIPTION OPERATOR TEST***);
-	// SubscriptionOperatorTest();
-	// println("\n");
-	// printlnnl(CYAN << ***ARRAY BOUNDARIES EXCEPTION TEST***);
-	// ArrayBoundariesExceptionTest();
-	// println("\n");
-	// printlnnl(CYAN << ***SIZE METHOD TEST***);
-	// SizeMethodTest();
+	printlnnl(CYAN << "***PARAMETERIZED CONSTRUCTOR TEST***");
+	ParameterizedConstructorTest();
+	println("\n");
+	printlnnl(CYAN << "***DEEP COPY CONSTRUCTOR AND ASSIGMENT TEST***");
+	DeepCopyConstructorAndAssignmentTest();
+	println("\n");
+	printlnnl(CYAN << "***ARRAY BOUNDARIES EXCEPTION TEST***");
+	ArrayBoundariesExceptionTest();
+	println("\n");
+	printlnnl(CYAN << "***SIZE METHOD TEST***");
+	SizeMethodTest();
 }
