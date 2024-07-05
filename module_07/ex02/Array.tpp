@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:05:55 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/07/04 18:05:58 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:43:46 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ template<typename T>
 Array<T>& Array<T>::operator=(const Array<T>& rhs){
 	if (this != &rhs) {
 		this->_size = rhs._size;
+		if (_arr) {
+			delete[] _arr;
+		}
 		_arr = new T[_size];
 		for (size_t i = 0; i < _size; i++){
 			this->_arr[i] = rhs._arr[i];

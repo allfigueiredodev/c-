@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:06:54 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/07/04 18:06:55 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/07/05 16:41:57 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void ValidIntArrayTest(void){
 		arr[i] = i;
 	}
 	iter<int>(arr, size, squaring<int>);
+	delete[] arr;
 }
 
 void ValidFloatArrayTest(void){
@@ -34,6 +35,7 @@ void ValidFloatArrayTest(void){
 		arr[i] = i + 0.3f;
 	}
 	iter<float>(arr, size, squaring<float>);
+	delete[] arr;
 }
 
 void ValidDoubleArrayTest(void){
@@ -43,6 +45,7 @@ void ValidDoubleArrayTest(void){
 		arr[i] = i + 0.7;
 	}
 	iter<double>(arr, size, squaring<double>);
+	delete[] arr;
 }
 
 int main(void) {
