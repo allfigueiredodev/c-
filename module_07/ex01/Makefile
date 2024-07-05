@@ -6,7 +6,7 @@
 #    By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/04 18:06:59 by aperis-p          #+#    #+#              #
-#    Updated: 2024/07/04 20:15:47 by aperis-p         ###   ########.fr        #
+#    Updated: 2024/07/05 08:32:32 by aperis-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = iter
 MAKE = make
 CC = c++
 FLAGS =  -Wall -Werror -Wextra -std=c++98 -g3
-SRC = ex01.cpp
+SRC = main.cpp
 
 OBJS = $(SRC:.cpp=.o)
 
