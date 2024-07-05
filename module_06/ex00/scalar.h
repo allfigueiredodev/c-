@@ -1,12 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scalar.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/04 13:42:44 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/07/04 13:42:47 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SCALAR_H
 #define SCALAR_H
 
 #include <iostream>
 #include <string>
+#include <string.h>
 #include <limits.h>
-#include <float.h>
 #include <limits>
+#include <float.h>
 #include <cmath>
+#include <stdlib.h>
+#include <unistd.h>
+#include <ostream>
+#include <sstream>
 
 #define println(x) std::cout << x << DFT << std::endl;
 #define errorln(x) std::cerr << RED << x << DFT << std::endl;

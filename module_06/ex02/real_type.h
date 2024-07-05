@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   real_type.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/04 13:35:55 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/07/04 13:35:59 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef REAL_TYPE_H
 #define REAL_TYPE_H
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "Classes/Base/Base.hpp"
 #include "Classes/A/A.hpp"
 #include "Classes/B/B.hpp"

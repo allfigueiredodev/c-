@@ -1,8 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Serializer.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/04 13:43:57 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/07/04 13:44:00 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SERIALIZER_H
 #define SERIALIZER_H
 
 #include <iostream>
 #include <string>
+#include <cstring>
+#include <stdint.h>
 
 #define println(x) std::cout << x << DFT << std::endl;
 #define errorln(x) std::cerr << RED << x << DFT << std::endl;

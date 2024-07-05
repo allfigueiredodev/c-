@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   iter.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/04 18:06:46 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/07/04 20:27:11 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ITER_H
 #define ITER_H
 
@@ -26,7 +38,18 @@ void squaring(T& a) {
 }
 
 template<typename TARR>
-void iter(TARR* arr, int& size, void(*fptr)(TARR& data)) {
+void iter(TARR* arr, int size, void(*fptr)(const TARR& data)) {
+	if (!arr || size <= 0){
+		errorln("Invalid parameters.");
+		return ;
+	}
+	for(int i = 0; i < size; i++){
+		fptr(arr[i]);
+	}
+}
+
+template<typename TARR>
+void iter(TARR* arr, int size, void(*fptr)(TARR& data)) {
 	if (!arr || size <= 0){
 		errorln("Invalid parameters.");
 		return ;
