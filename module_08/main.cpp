@@ -2,13 +2,15 @@
 
 void ElementNotPresentTest(void){
 	std::vector<int> 	arr(10);
+	int					arrIndex = 0;
 	int					element = 3;
 
 	println(ORANGE << "We are going to look for the element: " << element << ".");
 	println(" ");	
-	for (unsigned long i = 0; i < arr.size(); i++) {
-		arr[i] = i * i;
-		std::cout << GREEN << "index " << i << " : " << arr[i] << std::endl;
+	for (std::vector<int>::iterator it = arr.begin(); it != arr.end(); it++) {
+		*it = arrIndex * arrIndex;
+		std::cout << GREEN << "index " << arrIndex << " : " << *it << std::endl;
+		arrIndex++;
 	}
 	println(" ");	
 	try {
@@ -21,13 +23,15 @@ void ElementNotPresentTest(void){
 
 void ElementPresentTest(void){
 	std::vector<int> 	arr(10);
+	int					arrIndex = 0;
 	int					element = 25;
 
 	println(ORANGE << "We are going to look for the element: " << element << ".");		
 	println(" ");	
-	for (unsigned long i = 0; i < arr.size(); i++) {
-		arr[i] = i * i;
-		std::cout << GREEN << "index " << i << " : " << arr[i] << std::endl;
+	for (std::vector<int>::iterator it = arr.begin(); it != arr.end(); it++) {
+		*it = arrIndex * arrIndex;
+		std::cout << GREEN << "index " << arrIndex << " : " << *it << std::endl;
+		arrIndex++;
 	}
 	println(" ");	
 	try {

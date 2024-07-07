@@ -59,6 +59,8 @@
 		"utility": "c",
 		"vector": "c",
 		"*.tcc": "c",
-		"hashtable": "c"
+		"hashtable": "c",
+		"memory_resource": "cpp",
+		"*.tpp": "cpp"
 	}
 }
