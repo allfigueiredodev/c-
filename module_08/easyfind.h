@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm>
+#include <exception>
 
 #define println(x) std::cout << x << DFT << std::endl;
 #define printlnnl(x) std::cout << x << DFT << "\n" << std::endl;
@@ -20,5 +23,7 @@
 #define ORANGE		"\033[0;38;5;166m"
 #define GREY		"\033[38;5;244m"
 #define DFT   		"\033[0m"
+
+#include "easyfind.tpp"
 
 #endif
