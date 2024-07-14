@@ -34,7 +34,7 @@ void    BitcoinExchange::_findNearMatch(std::string line) {
         std::stringstream dSSAmount(amount);
         dSSAmount >> dAmount;
         if (dSSAmount.fail())
-            return ;
+            errorln("Error: " << amount << " is not a valid number.");
     }
     mIt iter = this->_btcDb.find(timeStamp);
     if (iter != this->_btcDb.end()) {
@@ -71,10 +71,11 @@ void    BitcoinExchange::_validateAmount(std::string line) {
 };
 
 void    BitcoinExchange::_timestampChecker(std::string line) {
+    std::string timestamp = line.substr(0, 10);    
     std::string baseDate = "2009-01-02";
-    
-    if (line < baseDate) {
-        std::cerr << MAGENTA << "Error: bad input => ";
+
+    if (timestamp < baseDate || timestamp.length() != 10 || std::count(timestamp.begin(), timestamp.end(), '-') != 2) {
+        std::cerr << RED << "Error: bad input => ";
         errorln(line);
     }
     else {
@@ -95,6 +96,7 @@ void    BitcoinExchange::_formatChecker(std::string line) {
 void    BitcoinExchange::_inputExecutor(void) {
     std::string buffer;
 
+    std::getline(this->_inputFile, buffer);
     while (std::getline(this->_inputFile, buffer)) {
         this->_formatChecker(buffer);
     }
@@ -118,12 +120,13 @@ void    BitcoinExchange::_initDb(void) {
                 this->_btcDb[date] = dAmount;
         }
     }
-    std::cout << std::fixed;
-    std::cout.precision(2);
-    for(std::map<std::string, double>::iterator it = this->_btcDb.begin(); it != this->_btcDb.end(); it++) {
-        println(GREEN << it->first << ": " << YELLOW << it->second << std::endl);
-    }
-    println(CYAN << "MAP SIZE: " << this->_btcDb.size());
+    // std::cout << std::fixed;
+    // std::cout.precision(2);
+    // for(std::map<std::string, double>::iterator it = this->_btcDb.begin(); it != this->_btcDb.end(); it++) {
+    //     println(GREEN << it->first << ": " << YELLOW << it->second << std::endl);
+    // }
+    // println(CYAN << "MAP SIZE: " << this->_btcDb.size());
+    csvFile.close();
 }
 
 void    BitcoinExchange::_inputValidator(char* inputPath) {
@@ -136,7 +139,6 @@ void    BitcoinExchange::_inputValidator(char* inputPath) {
 };
 
 void    BitcoinExchange::runExchange(char* inputPath) {
-    std::string test;
     try {
         this->_inputValidator(inputPath);
         this->_initDb();
