@@ -2,7 +2,6 @@
 #include "Classes/Span/Span.hpp"
 
 // CANONICAL CONSTRUCTORS/DESTRUCTOR
-
 Span::Span(void) {
     std::cout << "Span class default constructor called." << std::endl;
 };
@@ -50,13 +49,13 @@ int    Span::shortestSpan(void) {
     }
     sort(spanCpy.begin(), spanCpy.end());
     currFirst = spanCpy.begin();
-    shortest = *next(currFirst) - *currFirst;
+    shortest = *(currFirst + 1) - *currFirst;
     for (size_t i = 0; i < spanCpy.size(); i++) {
         if (i != spanCpy.size() - 1) {
-            if (*next(currFirst) - *currFirst < shortest) {
-                shortest = *next(currFirst) - *currFirst;
+            if (*(currFirst + 1) - *currFirst < shortest) {
+                shortest = *(currFirst + 1) - *currFirst;
             }
-            currFirst = next(currFirst);
+            currFirst = (currFirst + 1);
         }
     }
     return (shortest);
@@ -101,6 +100,12 @@ int& Span::getIndex(int index) {
 
 std::vector<int> Span::getSpan(void) {
     return (this->_span);
+};
+
+void Span::printSpan(std::string color) {
+	for (it iter = this->_span.begin(); iter != this->_span.end(); iter++) {
+		std::cout << color << "'" << *iter << "' ";
+	}
 };
 
 // EXCEPTIONS

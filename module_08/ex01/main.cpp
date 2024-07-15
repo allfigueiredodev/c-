@@ -49,9 +49,7 @@ void	AddNumberMethodTest(void) {
 	sp.addNumber(2);
 	sp.addNumber(3);
 	println(GREEN << "Size after addition: " << sp.getSpanSize());
-	for (it iter = sp.getSpan().begin(); iter != sp.getSpan().end(); iter++) {
-		std::cout << YELLOW << "'" << *iter << "' ";
-	}
+	sp.printSpan(YELLOW);
 	std::cout << DFT << std::endl;
 }
 
@@ -60,9 +58,7 @@ void	ShortestSpanMethodTest(void) {
 
 	sp.addRange(smallVector.begin(), smallVector.end(), 0);
 	println(GREEN << "Vector to be tested: ");
-	for (it iter = sp.getSpan().begin(); iter != sp.getSpan().end(); iter++) {
-		std::cout << YELLOW << "'" << *iter << "' ";
-	}
+	sp.printSpan(YELLOW);
 	std::cout << DFT << std::endl;
 	println(BLUE << "Shortest span: ");
 	println(GREEN << sp.shortestSpan());
@@ -73,9 +69,7 @@ void	LongestSpanMethodTest(void) {
 
 	sp.addRange(smallVector.begin(), smallVector.end(), 0);
 	println(GREEN << "Vector to be tested: ");
-	for (it iter = sp.getSpan().begin(); iter != sp.getSpan().end(); iter++) {
-		std::cout << YELLOW << "'" << *iter << "' ";
-	}
+	sp.printSpan(YELLOW);
 	std::cout << DFT << std::endl;
 	println(BLUE << "Longest span: ");
 	println(GREEN << sp.longestSpan());
@@ -91,19 +85,13 @@ void	AddRangeMethodTest(void) {
 	spLarge.addRange(largeVector.begin(), largeVector.end(), 0);
 
 	println(MAGENTA << "Small vector: ");
-	for (it iter = spSmall.getSpan().begin(); iter != spSmall.getSpan().end(); iter++) {
-		std::cout << GREEN << "'" << *iter << "' ";
-	}
+	spSmall.printSpan(GREEN);
 	std::cout << DFT << std::endl;
 	println(MAGENTA << "Medium vector: ");
-	for (it iter = spMedium.getSpan().begin(); iter != spMedium.getSpan().end(); iter++) {
-		std::cout << YELLOW << "'" << *iter << "' ";
-	}
+	spMedium.printSpan(YELLOW);
 	std::cout << DFT << std::endl;
 	println(MAGENTA << "Large vector: ");
-	for (it iter = spLarge.getSpan().begin(); iter != spLarge.getSpan().end(); iter++) {
-		std::cout << RED << "'" << *iter << "' ";
-	}
+	spLarge.printSpan(RED);
 	std::cout << DFT << std::endl;
 };
 

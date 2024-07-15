@@ -21,6 +21,7 @@ class Span {
         unsigned int getSpanCapacity(void);
         const int& getIndex(int index) const;
         int& getIndex(int index);
+		void printSpan(std::string color);
         std::vector<int> getSpan(void);
         
         const int& operator[](size_t index) const;

@@ -1,13 +1,13 @@
 #include "easyfind.h"
 
 void ElementNotPresentTest(void){
-	std::vector<int> 	arr(10);
+	std::deque<int> 	arr(10);
 	int					arrIndex = 0;
 	int					element = 3;
 
 	println(ORANGE << "We are going to look for the element: " << element << ".");
 	println(" ");	
-	for (std::vector<int>::iterator it = arr.begin(); it != arr.end(); it++) {
+	for (std::deque<int>::iterator it = arr.begin(); it != arr.end(); it++) {
 		*it = arrIndex * arrIndex;
 		std::cout << GREEN << "index " << arrIndex << " : " << *it << std::endl;
 		arrIndex++;
@@ -22,13 +22,13 @@ void ElementNotPresentTest(void){
 }
 
 void ElementPresentTest(void){
-	std::vector<int> 	arr(10);
+	std::deque<int> 	arr(10);
 	int					arrIndex = 0;
 	int					element = 25;
 
 	println(ORANGE << "We are going to look for the element: " << element << ".");		
 	println(" ");	
-	for (std::vector<int>::iterator it = arr.begin(); it != arr.end(); it++) {
+	for (std::deque<int>::iterator it = arr.begin(); it != arr.end(); it++) {
 		*it = arrIndex * arrIndex;
 		std::cout << GREEN << "index " << arrIndex << " : " << *it << std::endl;
 		arrIndex++;
