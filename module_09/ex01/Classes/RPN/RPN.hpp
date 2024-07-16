@@ -29,10 +29,10 @@ class RPN {
     private:
         RPN(const RPN& RPN);
         RPN& operator=(const RPN& rhs);
-        parseExpression(char* expression);
+        void _parseExpression(std::string expression);
+		void _doTheMath(char mOperator);
 
         std::stack<int> _RPNStack;
-
 
 };
 

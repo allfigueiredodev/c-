@@ -22,19 +22,63 @@ RPN::~RPN(void) {
 };
 
 void    RPN::calc(char* expression) {
-
+	try {
+		this->_parseExpression(expression);
+		println(GREEN << this->_RPNStack.top());
+	} catch (std::exception& e) {
+		errorln(e.what());
+	}
 };
 
-void    RPN::parseExpression(char* expression) {
+void	RPN::_doTheMath(char mOperator) {
+	int nbr1 = this->_RPNStack.top();
+	println(ORANGE << "nbr1: " << nbr1);
+	this->_RPNStack.pop();
+	println(CYAN << mOperator);
+	int nbr2 = this->_RPNStack.top();
+	println(ORANGE << "nbr2: " << nbr2);
+	this->_RPNStack.pop();
+	switch (mOperator) 
+	{
+	case '+':
+		println(CYAN << nbr2 + nbr1);
+		this->_RPNStack.push(nbr2 + nbr1);
+		break;
+	case '-':
+		println(CYAN << nbr2 - nbr1);
+		this->_RPNStack.push(nbr2 - nbr1);
+		break;
+	case '*':
+		println(CYAN << nbr2 * nbr1);
+		this->_RPNStack.push(nbr2 * nbr1);
+		break;
+	case '/':
+		println(CYAN << nbr2 / nbr1);
+		this->_RPNStack.push(nbr2 / nbr1);
+		break;
+	
+	default:
+		throw std::invalid_argument("Error: Operator not valid.");
+	}	
+}
+
+void    RPN::_parseExpression(std::string expression) {
     std::string             buffer;
     std::stringstream       stream(expression);
+	std::string				generic;
 
     while (stream >> buffer) {
-        // isOperand...
-            // *add to stack
-        // isOperator...
-            // *check if the stack has at least two indexes
-                //* !if throw error
-                //* if do the math, push the result to the top of the stack 
-    }
-};
+		generic += buffer;
+		if(isdigit(*buffer.begin()))
+		{
+			this->_RPNStack.push(*buffer.begin() - '0');
+		}
+		else {
+			if (this->_RPNStack.size() <= 1) {
+				throw std::range_error("Error: Less than two operands inside the stack.");
+			}				
+			else
+				this->_doTheMath(*buffer.begin());
+		}
+	}
+}

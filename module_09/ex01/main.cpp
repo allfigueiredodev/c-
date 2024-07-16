@@ -9,5 +9,8 @@ int main(int argc, char** argv) {
 		errorln("Error: Too many arguments.");
 		println(CYAN << "Usage: ./RPN \"8 9 * 9 - 9 - 9 - 4 - 1 +\"");
 	}
+	RPN rpn;
+
+	rpn.calc(argv[1]);
 
 }
