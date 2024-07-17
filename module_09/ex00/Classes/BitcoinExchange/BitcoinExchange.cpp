@@ -13,7 +13,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& BitcoinExchange) {
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs) {
     std::cout << "BitcoinExchange class copy assign operator called." << std::endl;
-    if (this != &rhs){
+    if (this != &rhs) {
         *this = rhs;
     }
     return *this;
