@@ -27,18 +27,29 @@ bool comparePairsInDescending(const std::pair<int, int>& a, const std::pair<int,
 
 void	PmergeMe::createInsertionOrder(void) {
 	this->_insertionOrder.push_back(*(this->_jacobs.begin()));
-	this->_jacobs.erase(this->_jacobs.begin());
 	while(this->_insertionOrder.size() <= this->_pend.size()) {
+		this->_jacobs.erase(this->_jacobs.begin());	
 		if(!this->_jacobs.empty()) {
 			this->_firstJacob = this->_jacobs.front();
 			this->_lastInsertionOrder = this->_insertionOrder.back();
-			this->_insertionOrder.push_back(this->_jacobs.front());
 			this->_firstJacob--;
-			//Coloca o valor do primeiro elemento do jacobsthal num int -> int jacob = jacobsthal.front()
-			//Coloca o valor do último elemento da lista de inserção em outro int -> int last = container.back()
+			while (this->_firstJacob > this->_lastInsertionOrder && this->_insertionOrder.size() < this->_pend.size()) {
+				it	begin = this->_insertionOrder.begin();
+				it	end = this->_insertionOrder.end();
+				if (std::find(begin, end, this->_firstJacob) == end)
+					this->_insertionOrder.push_back(this->_firstJacob);
+				this->_firstJacob--;
+			}
 		} else {
+			int		missing = this->_pend.size() - 1;
 
+			while (this->_insertionOrder.size() < this->_pend.size())
+				this->_insertionOrder.push_back(missing--);
 		}
+	}
+	println(CYAN << "After insertion order list created: ");
+	for (it iter = this->_insertionOrder.begin(); iter != this->_insertionOrder.end(); iter++) {
+		std::cout << ORANGE << *iter << "' ";
 	}
 }
 
