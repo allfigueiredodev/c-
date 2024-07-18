@@ -21,51 +21,69 @@ PmergeMe::~PmergeMe(void) {
     std::cout << "PmergeMe class destructor called." << std::endl;
 };
 
-bool comparePairsInDescending(const std::pair<int, int>& a, const std::pair<int, int>& b) {
-    return a.first > b.first;
+void	PmergeMe::mergePend(void) {
+	int	value;
+	it pos;  
+	for (it iter = _insertionOrder.begin(); iter != _insertionOrder.end(); iter++) {
+		value = _pend[*iter];
+		pos = std::upper_bound(_sorted.begin(), _sorted.end(), value);
+		_sorted.insert(pos, value);
+	}
+	println(CYAN << "Sorted result: ");
+	for (it iter = _sorted.begin(); iter != _sorted.end(); iter++) {
+		std::cout << ORANGE << *iter << ", ";
+	}
+	println("");
 }
 
 void	PmergeMe::createInsertionOrder(void) {
-	this->_insertionOrder.push_back(*(this->_jacobs.begin()));
-	while(this->_insertionOrder.size() <= this->_pend.size()) {
-		this->_jacobs.erase(this->_jacobs.begin());	
-		if(!this->_jacobs.empty()) {
-			this->_firstJacob = this->_jacobs.front();
-			this->_lastInsertionOrder = this->_insertionOrder.back();
-			this->_firstJacob--;
-			while (this->_firstJacob > this->_lastInsertionOrder && this->_insertionOrder.size() < this->_pend.size()) {
-				it	begin = this->_insertionOrder.begin();
-				it	end = this->_insertionOrder.end();
-				if (std::find(begin, end, this->_firstJacob) == end)
-					this->_insertionOrder.push_back(this->_firstJacob);
-				this->_firstJacob--;
+	_insertionOrder.push_back(_jacobsSequence.front());
+
+	while (_insertionOrder.size() < _pend.size()) {
+		_jacobsSequence.erase(_jacobsSequence.begin());
+		if (!(_jacobsSequence.empty())) {
+			int	_lastInsertionNbr = _insertionOrder.back();
+			int	_currentJacobs = _jacobsSequence.front();
+		
+			_insertionOrder.push_back(_currentJacobs);
+			_currentJacobs--;
+			while(_currentJacobs > _lastInsertionNbr && _insertionOrder.size() < _pend.size()) {
+				it begin = _insertionOrder.begin();
+				it end = _insertionOrder.end();
+
+				if (std::find(begin, end, _currentJacobs) == end) {
+					_insertionOrder.push_back(_currentJacobs);
+				}
+				_currentJacobs--;
 			}
 		} else {
-			int		missing = this->_pend.size() - 1;
+			size_t	missing = _pend.size() - 1;
 
-			while (this->_insertionOrder.size() < this->_pend.size())
-				this->_insertionOrder.push_back(missing--);
+			while (_insertionOrder.size() < _pend.size()) {
+				_insertionOrder.push_back(missing);
+				missing--;
+			}
 		}
 	}
-	println(CYAN << "After insertion order list created: ");
-	for (it iter = this->_insertionOrder.begin(); iter != this->_insertionOrder.end(); iter++) {
-		std::cout << ORANGE << *iter << "' ";
+	println(CYAN << "Insertion order: ");
+	for (it iter = _insertionOrder.begin(); iter != _insertionOrder.end(); iter++) {
+		std::cout << ORANGE << *iter << ", "; 
 	}
+	println("");
 }
 
 void	PmergeMe::initJacobs(void) {
-	this->_jacobs.push_back(0);
-	this->_jacobs.push_back(1);
-	while (this->_jacobs.back() <= static_cast<int>(this->_pend.size())) {
-		this->_jacobs.push_back(this->_jacobs.back() + (2 * *(this->_jacobs.end() - 2)));
+	this->_jacobsSequence.push_back(0);
+	this->_jacobsSequence.push_back(1);
+	while (this->_jacobsSequence.back() <= static_cast<int>(this->_pend.size())) {
+		this->_jacobsSequence.push_back(this->_jacobsSequence.back() + (2 * *(this->_jacobsSequence.end() - 2)));
 	}
-	this->_jacobs.erase(this->_jacobs.begin() + 1);
-	// println("Jacobs: ");
-	// for (it iter = this->_jacobs.begin(); iter != this->_jacobs.end(); iter++) {
-	// 	println(ORANGE << *iter);
-	// }
-	// Dentro desse loop, você vai dar push num novo número cada vez.
-	// Esse número vai ser o último número + duas vezes o número anterior a ele -> new_nbr = container.back() + 2 * *(container.end() + 1)
+	this->_jacobsSequence.erase(this->_jacobsSequence.begin() + 1);
+	println(CYAN << "Jacobs: ");
+	for (it iter = this->_jacobsSequence.begin(); iter != this->_jacobsSequence.end(); iter++) {
+		std::cout << ORANGE << *iter << ", ";
+	}
+	println("");
 }
 
 void	PmergeMe::splitSortedPend(void) {
@@ -100,7 +118,6 @@ void	PmergeMe::makePairs(void) {
 		println(GREEN << this->_unsortedPairInput[i].first);
 		println(GREEN << this->_unsortedPairInput[i].second);
 	}
-	// sort(this->_unsortedPairInput.begin(), this->_unsortedPairInput.end(), comparePairsInDescending);
 	sort(this->_unsortedPairInput.begin(), this->_unsortedPairInput.end());
 	// println(CYAN << "After sort: ");
 	// for (size_t i = 0; i < this->_unsortedPairInput.size(); i++) {
@@ -163,4 +180,5 @@ void PmergeMe::FJSort(int argc, char **argv) {
 	this->splitSortedPend();
 	this->initJacobs();
 	this->createInsertionOrder();
+	this->mergePend();
 };

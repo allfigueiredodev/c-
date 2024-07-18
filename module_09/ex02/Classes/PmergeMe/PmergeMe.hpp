@@ -36,14 +36,13 @@ class PmergeMe {
         PmergeMe& operator=(const PmergeMe& rhs);
 		
 		std::vector<int>				_unsortedInput;
+		vIntPair						_unsortedPairInput;
 		std::vector<int>				_sorted;
 		std::vector<int>				_pend;
-		std::vector<int>				_jacobs;
+		std::vector<int>				_jacobsSequence;
 		std::vector<int>				_insertionOrder;
-		vIntPair						_unsortedPairInput;
 		int								_theOddOne;
-		int								_firstJacob;
-		int								_lastInsertionOrder;
+
 
 		void				inputValidation(int argc, char** argv);
 		int					isSorted(void);
@@ -52,7 +51,7 @@ class PmergeMe {
 		void				splitSortedPend(void);
 		void				initJacobs(void);
 		void				createInsertionOrder(void);
-
+		void				mergePend(void);
 };
 
 #endif
