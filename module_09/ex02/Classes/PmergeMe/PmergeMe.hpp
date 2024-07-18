@@ -10,6 +10,8 @@
 #include <cstdlib>
 #include <vector>
 #include <utility>
+#include <ctime>
+#include <iomanip>
 
 typedef std::vector<int>::iterator it;
 typedef std::vector<std::pair<int, int> > vIntPair;
@@ -42,6 +44,8 @@ class PmergeMe {
 		std::vector<int>				_jacobsSequence;
 		std::vector<int>				_insertionOrder;
 		int								_theOddOne;
+		std::clock_t					_startTime;
+		std::clock_t					_endTime;
 
 
 		void				inputValidation(int argc, char** argv);
@@ -52,6 +56,7 @@ class PmergeMe {
 		void				initJacobs(void);
 		void				createInsertionOrder(void);
 		void				mergePend(void);
+		void				printLog(int argc);
 };
 
 #endif
