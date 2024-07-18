@@ -5,9 +5,9 @@ check if they are already sorted -->
 <!-- if the size is odd, save the last element somewhere and pop it -->
 <!-- pair the numbers and place them on the structure -->
 <!-- sort the pairs by the highest number -->
-sort the list of pairs by the first element (higher)
-create two structures: sorted, with the first elements of each pair,
-and pend, with the second elements plus the last odd one saved
+<!-- sort the list of pairs by the first element (higher) -->
+<!-- create two structures: sorted, with the first elements of each pair,
+and pend, with the second elements plus the last odd one saved -->
 calculate the jacobsthal list:
 start with 0 and 1
 sum the last number with twice the second to last

@@ -13,6 +13,7 @@
 
 typedef std::vector<int>::iterator it;
 typedef std::vector<std::pair<int, int> > vIntPair;
+typedef std::vector<std::pair<int, int> >::iterator vIntPairIter;
 
 #define println(x) std::cout << x << DFT << std::endl;
 #define errorln(x) std::cerr << RED << x << DFT << std::endl;
@@ -34,15 +35,24 @@ class PmergeMe {
         PmergeMe(const PmergeMe& PmergeMe);
         PmergeMe& operator=(const PmergeMe& rhs);
 		
-		std::vector<int>					_unsortedInput;
+		std::vector<int>				_unsortedInput;
+		std::vector<int>				_sorted;
+		std::vector<int>				_pend;
+		std::vector<int>				_jacobs;
+		std::vector<int>				_insertionOrder;
 		vIntPair						_unsortedPairInput;
 		int								_theOddOne;
+		int								_firstJacob;
+		int								_lastInsertionOrder;
 
 		void				inputValidation(int argc, char** argv);
 		int					isSorted(void);
 		void				checkIfIsOdd(void);
 		void				makePairs(void);
-		
+		void				splitSortedPend(void);
+		void				initJacobs(void);
+		void				createInsertionOrder(void);
+
 };
 
 #endif
