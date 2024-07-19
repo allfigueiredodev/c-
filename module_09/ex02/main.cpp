@@ -6,7 +6,7 @@
 /*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 13:02:32 by aperis-p          #+#    #+#             */
-/*   Updated: 2024/07/18 16:38:23 by aperis-p         ###   ########.fr       */
+/*   Updated: 2024/07/18 19:50:50 by aperis-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main(int argc, char** argv) {
 	}
 	PmergeMe fJ;
 	
-
 	fJ.FJSort(argc, argv);
 	return (0);
 }
