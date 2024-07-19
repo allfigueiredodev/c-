@@ -74,7 +74,8 @@ void    BitcoinExchange::_timestampChecker(std::string line) {
     std::string timestamp = line.substr(0, 10);    
     std::string baseDate = "2009-01-02";
 
-    if (timestamp < baseDate || timestamp.length() != 10 || std::count(timestamp.begin(), timestamp.end(), '-') != 2) {
+    if (timestamp < baseDate || timestamp.length() != 10 || std::count(timestamp.begin(), timestamp.end(), '-') != 2 
+		||  atoi(timestamp.substr(5, 2).c_str()) > 12 || atoi(timestamp.substr(8, 2).c_str()) > 31 ) {
         std::cerr << RED << "Error: bad input => ";
         errorln(line);
     }
@@ -120,12 +121,6 @@ void    BitcoinExchange::_initDb(void) {
                 this->_btcDb[date] = dAmount;
         }
     }
-    // std::cout << std::fixed;
-    // std::cout.precision(2);
-    // for(std::map<std::string, double>::iterator it = this->_btcDb.begin(); it != this->_btcDb.end(); it++) {
-    //     println(GREEN << it->first << ": " << YELLOW << it->second << std::endl);
-    // }
-    // println(CYAN << "MAP SIZE: " << this->_btcDb.size());
     csvFile.close();
 }
 
