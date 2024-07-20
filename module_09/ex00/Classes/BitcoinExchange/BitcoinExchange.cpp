@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 21:54:21 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/07/19 21:57:00 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "BitcoinExchange.h"
 #include "Classes/BitcoinExchange/BitcoinExchange.hpp"
@@ -142,6 +153,7 @@ void    BitcoinExchange::runExchange(char* inputPath) {
     }
     catch (BitcoinExchange::FilePathNotFoundException& e) {
         errorln(e.what());
+		return ;
     }
 };
 

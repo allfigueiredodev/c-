@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 22:00:30 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/07/19 22:00:33 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 #define BITCOINEXCHANGE_HPP
@@ -25,8 +36,6 @@ class BitcoinExchange {
         void                            _timestampChecker(std::string line);
         void                            _validateAmount(std::string line);
         void                            _findNearMatch(std::string line);
-
-        // void                            _processOutput(std::string key, double value);
 
         class   FilePathNotFoundException : std::exception {
             public:

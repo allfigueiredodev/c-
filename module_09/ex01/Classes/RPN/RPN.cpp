@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperis-p <aperis-p@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/19 22:08:15 by aperis-p          #+#    #+#             */
+/*   Updated: 2024/07/19 22:19:27 by aperis-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Classes/RPN/RPN.hpp"
 
 RPN::RPN(void) {
@@ -27,33 +39,27 @@ void    RPN::calc(char* expression) {
 		println(GREEN << this->_RPNStack.top());
 	} catch (std::exception& e) {
 		errorln(e.what());
+		return ;
 	}
 };
 
 void	RPN::_doTheMath(char mOperator) {
 	int nbr1 = this->_RPNStack.top();
-	println(ORANGE << "nbr1: " << nbr1);
 	this->_RPNStack.pop();
-	println(CYAN << mOperator);
 	int nbr2 = this->_RPNStack.top();
-	println(ORANGE << "nbr2: " << nbr2);
 	this->_RPNStack.pop();
 	switch (mOperator) 
 	{
 	case '+':
-		println(CYAN << nbr2 + nbr1);
 		this->_RPNStack.push(nbr2 + nbr1);
 		break;
 	case '-':
-		println(CYAN << nbr2 - nbr1);
 		this->_RPNStack.push(nbr2 - nbr1);
 		break;
 	case '*':
-		println(CYAN << nbr2 * nbr1);
 		this->_RPNStack.push(nbr2 * nbr1);
 		break;
 	case '/':
-		println(CYAN << nbr2 / nbr1);
 		this->_RPNStack.push(nbr2 / nbr1);
 		break;
 	
