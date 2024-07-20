@@ -45,11 +45,7 @@ void	PmergeMe::vMergePend(void) {
 	int	value;
 	vIt pos;  
 	for (vIt iter = vData._insertionOrder.begin(); iter != vData._insertionOrder.end(); iter++) {
-		if (*iter >= static_cast<int>(vData._pend.size())){
-			value = vData._pend[*iter - 1];
-			pos = std::upper_bound(vData._sorted.begin(), vData._sorted.end(), value);
-			vData._sorted.insert(pos, value);
-		} else {
+		if (*iter < static_cast<int>(vData._pend.size())){
 			value = vData._pend[*iter];
 			pos = std::upper_bound(vData._sorted.begin(), vData._sorted.end(), value);
 			vData._sorted.insert(pos, value);
@@ -57,28 +53,20 @@ void	PmergeMe::vMergePend(void) {
 	}
 	vData._sorted.erase(std::unique(vData._sorted.begin(), vData._sorted.end()), vData._sorted.end());
 	this->vData._endTime = std::clock();
-	// println(CYAN << "Sorted result: ");
-	// for (vIt iter = vData._sorted.begin(); iter != vData._sorted.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", ";
-	// }
-	// println("");
 }
 
 void	PmergeMe::dMergePend(void) {
 	int	value;
 	dIt pos;  
 	for (dIt iter = dData._insertionOrder.begin(); iter != dData._insertionOrder.end(); iter++) {
-		value = dData._pend[*iter];
-		pos = std::upper_bound(dData._sorted.begin(), dData._sorted.end(), value);
-		dData._sorted.insert(pos, value);
+		if (*iter < static_cast<int>(dData._pend.size())){
+			value = dData._pend[*iter];
+			pos = std::upper_bound(dData._sorted.begin(), dData._sorted.end(), value);
+			dData._sorted.insert(pos, value);
+		}
 	}
 	dData._sorted.erase(std::unique(dData._sorted.begin(), dData._sorted.end()), dData._sorted.end());
 	this->dData._endTime = std::clock();
-	// println(CYAN << "Sorted result: ");
-	// for (it iter = _sorted.begin(); iter != _sorted.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", ";
-	// }
-	// println("");
 }
 
 void	PmergeMe::vCreateInsertionOrder(void) {
@@ -110,11 +98,6 @@ void	PmergeMe::vCreateInsertionOrder(void) {
 			}
 		}
 	}
-	// println(CYAN << "Insertion order: ");
-	// for (vIt iter = vData._insertionOrder.begin(); iter != vData._insertionOrder.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", "; 
-	// }
-	// println("");
 }
 
 void	PmergeMe::dCreateInsertionOrder(void) {
@@ -146,11 +129,6 @@ void	PmergeMe::dCreateInsertionOrder(void) {
 			}
 		}
 	}
-	// println(CYAN << "Insertion order: ");
-	// for (it iter = _insertionOrder.begin(); iter != _insertionOrder.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", "; 
-	// }
-	// println("");
 }
 
 void	PmergeMe::vInitJacobs(void) {
@@ -160,11 +138,6 @@ void	PmergeMe::vInitJacobs(void) {
 		this->vData._jacobsSequence.push_back(this->vData._jacobsSequence.back() + (2 * *(this->vData._jacobsSequence.end() - 2)));
 	}
 	this->vData._jacobsSequence.erase(this->vData._jacobsSequence.begin() + 1);
-	// println(CYAN << "Jacobs: ");
-	// for (vIt iter = this->vData._jacobsSequence.begin(); iter != this->vData._jacobsSequence.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", ";
-	// }
-	// println("");
 }
 
 void	PmergeMe::dInitJacobs(void) {
@@ -174,11 +147,6 @@ void	PmergeMe::dInitJacobs(void) {
 		this->dData._jacobsSequence.push_back(this->dData._jacobsSequence.back() + (2 * *(this->dData._jacobsSequence.end() - 2)));
 	}
 	this->dData._jacobsSequence.erase(this->dData._jacobsSequence.begin() + 1);
-	// println(CYAN << "Jacobs: ");
-	// for (it iter = this->_jacobsSequence.begin(); iter != this->_jacobsSequence.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", ";
-	// }
-	// println("");
 }
 
 void	PmergeMe::vSplitSortedPend(void) {
@@ -188,16 +156,6 @@ void	PmergeMe::vSplitSortedPend(void) {
 	}
 	if(this->vData._theOddOne >= 0)
 		this->vData._pend.push_back(this->vData._theOddOne);
-	// println(CYAN << "_sorted: ");
-	// for (vIt iter = this->vData._sorted.begin(); iter != this->vData._sorted.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", ";
-	// }
-	// println("");
-	// println(CYAN << "_pend: ");
-	// for (vIt iter = this->vData._pend.begin(); iter != this->vData._pend.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", ";
-	// }
-	// println("");
 }
 
 void	PmergeMe::dSplitSortedPend(void) {
@@ -207,16 +165,6 @@ void	PmergeMe::dSplitSortedPend(void) {
 	}
 	if(this->dData._theOddOne >= 0)
 		this->dData._pend.push_back(this->dData._theOddOne);
-	// println(CYAN << "_sorted: ");
-	// for (it iter = this->_sorted.begin(); iter != this->_sorted.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", ";
-	// }
-	// println("");
-	// println(CYAN << "_pend: ");
-	// for (it iter = this->_pend.begin(); iter != this->_pend.end(); iter++) {
-	// 	std::cout << ORANGE << *iter << ", ";
-	// }
-	// println("");
 }
 
 void	PmergeMe::vMakePairs(void) {
@@ -224,19 +172,10 @@ void	PmergeMe::vMakePairs(void) {
 		this->_unsortedVPairInput.push_back(std::make_pair(this->vData._unsortedInput[i], this->vData._unsortedInput[i + 1] ));
 	}
 	for (size_t i = 0; i < this->_unsortedVPairInput.size(); i++) {
-		// println(ORANGE << "Pair[" << i << "]: ");
-		// println(GREEN << this->_unsortedVPairInput[i].first);
-		// println(GREEN << this->_unsortedVPairInput[i].second);
 		if (this->_unsortedVPairInput[i].first < this->_unsortedVPairInput[i].second)
 			std::swap(this->_unsortedVPairInput[i].first, this->_unsortedVPairInput[i].second);
-		// println(GREEN << this->_unsortedVPairInput[i].first);
-		// println(GREEN << this->_unsortedVPairInput[i].second);
 	}
 	sort(this->_unsortedVPairInput.begin(), this->_unsortedVPairInput.end());
-	// println(CYAN << "After sort: ");
-	// for (size_t i = 0; i < this->_unsortedVPairInput.size(); i++) {
-	// 	std::cout << ORANGE << this->_unsortedVPairInput[i].first << ", ";
-	// }
 }
 
 void	PmergeMe::dMakePairs(void) {
@@ -244,19 +183,10 @@ void	PmergeMe::dMakePairs(void) {
 		this->_unsortedVPairInput.push_back(std::make_pair(this->dData._unsortedInput[i], this->dData._unsortedInput[i + 1] ));
 	}
 	for (size_t i = 0; i < this->_unsortedVPairInput.size(); i++) {
-		// println(ORANGE << "Pair[" << i << "]: ");
-		// println(GREEN << this->_unsortedVPairInput[i].first);
-		// println(GREEN << this->_unsortedVPairInput[i].second);
 		if (this->_unsortedVPairInput[i].first < this->_unsortedVPairInput[i].second)
 			std::swap(this->_unsortedVPairInput[i].first, this->_unsortedVPairInput[i].second);
-		// println(GREEN << this->_unsortedVPairInput[i].first);
-		// println(GREEN << this->_unsortedVPairInput[i].second);
 	}
 	sort(this->_unsortedVPairInput.begin(), this->_unsortedVPairInput.end());
-	// println(CYAN << "After sort: ");
-	// for (size_t i = 0; i < this->_unsortedPairInput.size(); i++) {
-	// 	std::cout << ORANGE << this->_unsortedPairInput[i].first << ", ";
-	// }
 }
 
 void	PmergeMe::vCheckIfIsOdd(void) {
@@ -351,7 +281,9 @@ void PmergeMe::FJSort(int argc, char **argv) {
 	}
 	catch (std::exception& e) {
 		errorln(e.what());
+		return ;
 	}
+
 	this->vCheckIfIsOdd();
 	this->vMakePairs();
 	this->vSplitSortedPend();
